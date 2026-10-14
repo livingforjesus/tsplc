@@ -151,7 +151,8 @@ Ready: { device: "scanner", channel: "inputs.Trigger_Ready" },
 ```
 
 Direct addresses support input/output `Xbyte.bit`, `B`, `W` and `D` forms. Bit
-numbers are 0–7. A direct binding can include `type` for raw ST declaration
+numbers are 0–7. A logical `FixedArray` of numeric elements binds at its first
+element's `B`/`W`/`D` address and occupies consecutive addresses. A direct binding can include `type` for raw ST declaration
 checking. EDS channel IDs are descriptor-specific; use generated
 `HardwareIoMapping` as explained in the [hardware guide](../guides/hardware-and-io.md).
 

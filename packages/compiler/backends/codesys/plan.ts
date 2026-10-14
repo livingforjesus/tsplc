@@ -93,7 +93,12 @@ function validateIo(core: VerifiedCoreModule, options: CodesysOptions, report: R
       report(`Missing I/O binding for ${item.name}.`, item.span);
       continue;
     }
-    if (binding.type && binding.type !== item.type)
+    const type = core.types.find((type) => type.id === item.type);
+    // An array binds at its first element; the remaining elements follow at
+    // consecutive addresses of the same width, like an EDS byte/word span.
+    const array = type?.kind === "array" ? type : undefined;
+    const element = array ? core.types.find((type) => type.id === array.element) : type;
+    if (binding.type && !ioTypeMatches(binding.type, item.type, array))
       report(
         `I/O type mismatch for ${item.name}: ${item.type} cannot bind to ${binding.type}.`,
         item.span,
@@ -103,13 +108,17 @@ function validateIo(core: VerifiedCoreModule, options: CodesysOptions, report: R
       report(`Wrong address region for ${item.name}: expected %${region}X.`, item.span);
     const match = /^%([IQ])([XBWD])([0-9]+)(?:\.([0-7]))?$/.exec(binding.address);
     if (match) {
-      const type = core.types.find((type) => type.id === item.type);
-      if (item.storage === "input" && type?.kind === "float")
+      if (item.storage === "input" && element?.kind === "float")
         report(
           "Floating logical inputs require an explicit runtime nonfinite policy, which is not supported yet.",
           item.span,
         );
-      const bits = type?.kind === "bool" ? 1 : type && "bits" in type ? type.bits : 0;
+      if (array && element?.kind === "bool")
+        report(
+          `BOOL arrays are not bit-packed in CODESYS I/O; bind each element of ${item.name} separately.`,
+          item.span,
+        );
+      const bits = element?.kind === "bool" ? 1 : element && "bits" in element ? element.bits : 0;
       const size = match[2] === "X" ? 1 : match[2] === "B" ? 8 : match[2] === "W" ? 16 : 32;
       if (!bits || bits !== size)
         report(`Address size does not match ${item.name}:${item.type}.`, item.span);
@@ -118,7 +127,7 @@ function validateIo(core: VerifiedCoreModule, options: CodesysOptions, report: R
       const unit = size === 1 || options.profile.numericAddressing === "byte" ? 8n : BigInt(size);
       const offset = BigInt(match[3]!);
       const start = offset * unit + BigInt(match[4] ?? 0),
-        end = start + BigInt(size);
+        end = start + BigInt(size) * BigInt(array?.length ?? 1);
       if (size !== 1 && options.profile.numericAddressing === "byte" && offset % BigInt(size / 8))
         report(`Unaligned numeric I/O address ${binding.address}.`, item.span);
       const collision = addresses.find(
@@ -132,6 +141,21 @@ function validateIo(core: VerifiedCoreModule, options: CodesysOptions, report: R
   }
   for (const name of Object.keys(options.io))
     if (!names.has(name)) report(`Unknown I/O binding ${name}.`);
+}
+
+/** Typegen spells EDS spans as IEC arrays; their layout must match, while bounds stay the author's choice. */
+function ioTypeMatches(
+  expected: string,
+  type: string,
+  array: { element: string; length: number } | undefined,
+): boolean {
+  if (!array) return expected === type;
+  const match = /^ARRAY\[(-?\d+)\.\.(-?\d+)\] OF (\w+)$/i.exec(expected.trim());
+  return (
+    !!match &&
+    Number(match[2]) - Number(match[1]) + 1 === array.length &&
+    match[3]!.toUpperCase() === array.element
+  );
 }
 
 function validateTasks(core: VerifiedCoreModule, deployment: Deployment, report: Report): void {

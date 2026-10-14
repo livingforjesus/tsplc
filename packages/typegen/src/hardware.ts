@@ -501,10 +501,15 @@ export async function loadHardware(
           const length = Math.floor(
             Math.min(member.bits, payloadSize * 8 - member.offsetBits) / scalarBits,
           );
+          const elementWidth = { 8: "B", 16: "W", 32: "D" }[scalarBits];
           channel.type = `ARRAY[0..${length - 1}] OF ${member.type}`;
           channel.bits = length * scalarBits;
+          // The whole span binds to a logical FixedArray at its first element's address.
+          channel.address =
+            elementWidth && (base * 8 + member.offsetBits) % scalarBits === 0
+              ? `%${region}${elementWidth}${base + member.offsetBits / 8}`
+              : undefined;
           channels.push(channel);
-          const elementWidth = { 8: "B", 16: "W", 32: "D" }[scalarBits];
           for (let index = 0; index < length; index++) {
             const offset = member.offsetBits + index * scalarBits;
             channels.push({

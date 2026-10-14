@@ -117,6 +117,24 @@ BOOL mappings use explicit bit addresses. Numeric mappings require
 indexes; `"element"` uses element-based indexes. Alignment, width and overlapping
 bindings are checked under the selected profile.
 
+Multi-byte EDS spans, such as the Cognex `inputs.Result_Data` byte array, bind
+whole to a `FixedArray` of numeric elements:
+
+```ts
+declare const ScannerResult: Input<FixedArray<BYTE, 480>>;
+```
+
+```ts
+ScannerResult: { device: "scanner", channel: "inputs.Result_Data" },
+```
+
+The span binds at its first element's address and its remaining elements follow
+at consecutive addresses. The element type and length must match the channel's
+`ARRAY[...] OF ...` type; the declared lower bound is your choice. The overlap
+check covers the whole span. BOOL arrays are rejected because CODESYS does not
+bit-pack them at `%IX`; bind each BOOL separately. Individual elements such as
+`inputs.Result_Data[0]` remain available as scalar channels.
+
 For a direct logical mapping, use `{ address: "%IX0.0" }` instead of
 `{ device, channel }`. Raw-ST mappings use qualified names such as
 `"LineIO.Start"` and can include `type: "BOOL"` to check the authored declaration.

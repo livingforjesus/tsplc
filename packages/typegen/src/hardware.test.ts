@@ -92,7 +92,14 @@ test("actual Cognex EDS preserves packed flags, connection size and truncated by
   expect(channel("inputs.General_Fault")).toMatchObject({ address: "%IX1.7", type: "BOOL" });
   expect(channel("inputs.Trigger_ID")).toMatchObject({ address: "%IW6", type: "UINT" });
   expect(channel("outputs.Trigger")).toMatchObject({ address: "%QX0.1", type: "BOOL" });
-  expect(channel("inputs.Result_Data")).toMatchObject({ type: "ARRAY[0..479] OF BYTE" });
+  expect(channel("inputs.Result_Data")).toMatchObject({
+    address: "%IB16",
+    type: "ARRAY[0..479] OF BYTE",
+  });
+  expect(channel("outputs.User_Data")).toMatchObject({
+    address: "%QB8",
+    type: "ARRAY[0..487] OF BYTE",
+  });
   expect(channel("inputs.Result_Data[479]")?.address).toBe("%IB495");
   expect(channel("inputs.Result_Data[480]")).toBeUndefined();
   expect(channel("outputs.User_Data[487]")?.address).toBe("%QB495");
@@ -123,6 +130,13 @@ test("actual ConveyLinx and B&R EDS resolve 16-bit and record-independent runtim
   });
   const types = generateHardwareTypes(hardware);
   expect(types).toContain('channel: "inputs.Result_Data[479]"');
+  expect(types).toContain('channel: "inputs.Result_Data" }');
+  expect(
+    resolveIo(
+      actualHardware({ io: { Data: { device: "scanner", channel: "inputs.Result_Data" } } }),
+      hardware,
+    ),
+  ).toEqual({ Data: { address: "%IB16", type: "ARRAY[0..479] OF BYTE" } });
   expect(types).toContain('channel: "outputs.Byte27"');
 });
 

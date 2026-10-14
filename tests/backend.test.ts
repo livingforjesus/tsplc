@@ -14,6 +14,7 @@ import { codesys, direct, planCodesys, emitCodesys } from "@vplc/compiler/codesy
 const directories: string[] = [];
 function frontend(
   source = "let running: BOOL = false; export function main(): void { if (Start && !running) { running = true; Motor = true; return; } Motor = false; }",
+  declarations = "",
 ): PlcModule {
   const directory = mkdtempSync(join(tmpdir(), "plcts-backend-"));
   directories.push(directory);
@@ -21,7 +22,7 @@ function frontend(
   writeFileSync(join(directory, "main.ts"), source);
   writeFileSync(
     join(directory, "io.d.ts"),
-    "declare const Start: Input<BOOL>; declare let Motor: Output<BOOL>;",
+    `declare const Start: Input<BOOL>; declare let Motor: Output<BOOL>; ${declarations}`,
   );
   const result = analyze({
     tsconfig: join(directory, "tsconfig.json"),
@@ -254,6 +255,65 @@ describe("CODESYS backend", () => {
         io: { ...valid.io, Extra: direct("%IX00.0") },
       }).plan,
     ).toBeUndefined();
+  });
+  test("binds fixed arrays to consecutive I/O spans with layout-checked types", () => {
+    const input = frontend(
+      "export function main(): void { Motor = Start; Copy = copy(Data); Copy[0] = Tail; }",
+      "declare const Data: Input<FixedArray<BYTE, 4>>; declare const Tail: Input<BYTE>; declare let Copy: Output<FixedArray<BYTE, 4>>;",
+    );
+    const normalized = normalizeModule(input);
+    if (!normalized.core) throw new Error(JSON.stringify(normalized.diagnostics));
+    const checked = normalized.core;
+    const valid = {
+      ...options(),
+      profile: { directAddressing: "byte" as const, numericAddressing: "byte" as const },
+      io: {
+        ...options().io,
+        Data: { ...direct("%IB16"), type: "ARRAY[0..3] OF BYTE" },
+        Tail: direct("%IB20"),
+        Copy: direct("%QB8"),
+      },
+    };
+    const planned = planCodesys(checked, deployment, valid);
+    if (!planned.plan) throw new Error(JSON.stringify(planned.diagnostics));
+    const output = emitCodesys(planned.plan);
+    const io = output.objects.find((item) => item.id === "io");
+    const program = output.objects.find((item) => item.kind === "program");
+    expect(io?.declaration).toMatch(/Data_physical AT %IB16 : \S+;/);
+    expect(io?.declaration).toMatch(/Copy_physical AT %QB8 : \S+;/);
+    expect(program?.implementation).toContain("GVL_IO.Data := GVL_IO.Data_physical;");
+    expect(program?.implementation).toContain("GVL_IO.Copy_physical := GVL_IO.Copy;");
+    const rejected = (io: Record<string, { kind: "direct"; address: string; type?: string }>) =>
+      planCodesys(checked, deployment, { ...valid, io: { ...valid.io, ...io } }).diagnostics.map(
+        (item) => item.message,
+      );
+    // The four-byte span ends at %IB19, so a byte there overlaps it.
+    expect(rejected({ Tail: direct("%IB19") })).toEqual([
+      expect.stringContaining("Overlapping I/O address %IB19 with Data"),
+    ]);
+    expect(rejected({ Data: { ...direct("%IB16"), type: "ARRAY[0..2] OF BYTE" } })).toEqual([
+      expect.stringContaining("I/O type mismatch for Data"),
+    ]);
+    expect(rejected({ Data: { ...direct("%IB16"), type: "ARRAY[0..3] OF WORD" } })).toEqual([
+      expect.stringContaining("I/O type mismatch for Data"),
+    ]);
+    expect(rejected({ Data: direct("%IW16") })).toContainEqual(
+      expect.stringContaining("Address size does not match Data"),
+    );
+  });
+  test("rejects BOOL arrays because CODESYS does not bit-pack them at %IX", () => {
+    const input = frontend(
+      "export function main(): void { Motor = Flags[0]; }",
+      "declare const Flags: Input<FixedArray<BOOL, 8>>;",
+    );
+    const normalized = normalizeModule(input);
+    if (!normalized.core) throw new Error(JSON.stringify(normalized.diagnostics));
+    expect(
+      planCodesys(normalized.core, deployment, {
+        ...options(),
+        io: { ...options().io, Flags: direct("%IX1.0") },
+      }).diagnostics.map((item) => item.message),
+    ).toEqual([expect.stringContaining("BOOL arrays are not bit-packed")]);
   });
   test("rejects task omissions, duplicate names, invalid TIME schedules and cross-task state", () => {
     const checked = core();

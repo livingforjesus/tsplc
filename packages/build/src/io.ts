@@ -6,6 +6,14 @@ export interface DirectIoBinding {
   address: string;
   type?: string;
 }
+// A span binds at its first element: ARRAY[l..u] OF <element> with consecutive addresses.
+const arrayType = /^ARRAY\s*\[\s*(-?\d+)\s*\.\.\s*(-?\d+)\s*\]\s*OF\s+(\w+)$/;
+const layout = (type: string) => {
+  const array = arrayType.exec(type);
+  return array
+    ? { element: array[3]!, length: Number(array[2]) - Number(array[1]) + 1 }
+    : { element: type, length: 1 };
+};
 const widths: Record<string, string> = {
   BOOL: "X",
   BYTE: "B",
@@ -59,13 +67,21 @@ export function bindStructuredTextIo(
         );
       const at = part.findIndex((t) => t.value === "AT");
       const variables = at < 0 ? names : names.filter((t) => t.start < part[at]!.start);
+      const initializer = part.findIndex((t, index) => index > colonIndex && t.value === ":=");
+      const typeTokens = part.slice(colonIndex + 1, initializer < 0 ? undefined : initializer);
+      const type = typeTokens.length
+        ? object.declaration
+            .slice(typeTokens[0]!.start, typeTokens.at(-1)!.end)
+            .replace(/\s+/g, " ")
+            .toUpperCase()
+        : "";
       for (const name of variables)
         declarations.push({
           object,
           name: name.value,
           names: variables,
           colon: part[colonIndex]!,
-          type: part[colonIndex + 1]?.value ?? "",
+          type,
         });
     }
     object.children.forEach(visit);
@@ -87,9 +103,15 @@ export function bindStructuredTextIo(
     const declaration = matches[0]!;
     if (declaration.names.length !== 1)
       throw new Error(`${symbol}: declare mapped IO variables separately.`);
-    if (!widths[declaration.type] || binding.address[2] !== widths[declaration.type])
+    const declared = layout(declaration.type);
+    if (
+      !widths[declared.element] ||
+      (declared.length > 1 && declared.element === "BOOL") ||
+      binding.address[2] !== widths[declared.element]
+    )
       throw new Error(`${symbol}: ${declaration.type} is incompatible with ${binding.address}.`);
-    if (binding.type && binding.type.toUpperCase() !== declaration.type)
+    const expected = binding.type && layout(binding.type.replace(/\s+/g, " ").toUpperCase());
+    if (expected && (expected.element !== declared.element || expected.length !== declared.length))
       throw new Error(`${symbol}: expected ${binding.type}, found ${declaration.type}.`);
     const list = edits.get(declaration.object) ?? [];
     const start = declaration.names[0]!.end;
