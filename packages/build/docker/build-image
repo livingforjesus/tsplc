@@ -1,0 +1,38 @@
+#!/bin/sh
+set -eu
+installer=
+installer_source=installer-download
+if [ "$#" -gt 1 ]; then
+    echo 'Usage: docker/build-image [ /path/to/CODESYS-64-3.5.22.30.exe ]' >&2
+    echo 'Downloads the official installer automatically when no file is supplied.' >&2
+    exit 2
+fi
+if [ "$#" -eq 1 ]; then
+    installer=$1
+    installer_source=installer-local
+    test -f "$installer" || { echo "Installer not found: $installer" >&2; exit 1; }
+fi
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+context=$(mktemp -d)
+source_context=
+trap 'rm -rf "$context"; if [ -n "$source_context" ]; then rm -rf "$source_context"; fi' EXIT HUP INT TERM
+if [ -n "$installer" ]; then
+    cp "$installer" "$context/codesys.exe"
+fi
+mkdir "$context/winetricks"
+if [ -n "${CODESYS_WINETRICKS_CACHE:-}" ]; then
+    test -d "$CODESYS_WINETRICKS_CACHE" || { echo 'CODESYS_WINETRICKS_CACHE must be a directory.' >&2; exit 1; }
+    cp -R "$CODESYS_WINETRICKS_CACHE/." "$context/winetricks/"
+fi
+case $(docker info --format '{{.OSType}}/{{.Architecture}}') in
+    linux/aarch64|linux/arm64) setup_base=arm-setup; setup_platform=linux/arm64 ;;
+    linux/x86_64|linux/amd64) setup_base=base; setup_platform=linux/amd64 ;;
+    *) echo 'The builder requires a Linux Docker server on ARM64 or AMD64.' >&2; exit 1 ;;
+esac
+source_context=$(bun -e 'import { pathToFileURL } from "node:url"; const { prepareDockerContext } = await import(pathToFileURL(process.argv[1]).href); console.log(await prepareDockerContext());' "$root/src/docker-context.ts")
+# FEX handles ARM setup's 32-bit prerequisites; the compiler runtime stays AMD64.
+docker build --platform linux/amd64 \
+    --build-arg "SETUP_BASE=$setup_base" --build-arg "SETUP_PLATFORM=$setup_platform" \
+    --build-arg "INSTALLER_SOURCE=$installer_source" --progress plain \
+    --build-context "installer=$context" \
+    -f "$source_context/docker/Dockerfile" -t "${CODESYS_BUILD_IMAGE:-vplc-build:3.5.22.30}" "$source_context"

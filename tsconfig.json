@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    "noEmit": true,
+    "types": ["bun"],
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": ["packages/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts", "examples/*/tests/**/*.ts"],
+  "exclude": [
+    "packages/compiler/types",
+    "examples",
+    "**/fixtures/**",
+    "**/test-fixtures/**",
+    "packages/vscode-extension/test-workspace",
+    "packages/vscode-extension/.vscode-test",
+    "packages/vscode-extension/tests/host"
+  ]
+}

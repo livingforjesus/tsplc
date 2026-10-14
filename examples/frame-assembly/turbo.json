@@ -1,0 +1,23 @@
+{
+  "tasks": {
+    "build": {
+      "cache": false,
+      "outputs": [
+        ".vplc/artifacts/**",
+        ".vplc/engineering/Application.project",
+        ".vplc/engineering/build.json",
+        ".vplc/engineering/runtime/**"
+      ]
+    },
+    "emit": {
+      "cache": false,
+      "outputs": [".vplc/artifacts/**"]
+    },
+    "check-sources": {
+      "cache": false
+    },
+    "typecheck": {
+      "outputs": []
+    }
+  }
+}

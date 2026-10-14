@@ -1,0 +1,95 @@
+{
+  "repository": "https://github.com/tkucic/plc_traffic_control",
+  "revision": "49c9de4e8ce588de3fd7f831e5f78ce6e303c1d9",
+  "license": "MIT",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "8808a2f8c12973a1db53cec4b1d1ae659691edd2df85369d03beafa71097a937"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "bb8ee1657e3ea6880f53d9e95b6e26052c0a2799e13904b6563d898615dad1cd"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e4d04cddbf540015df6a63009a4fd1d802d5e59fe6256cde8f1cdb9178721315"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6b0c8f26ae06064e94a3c270d2f5ea7c06cb31f160d176b0b34c9eb1527e50e8"
+    },
+    {
+      "path": "background.svg",
+      "sha256": "5c8c3fe58bc1365aa4d6a87b5bab42beab2e098a3e9978395c190f4231058308"
+    },
+    {
+      "path": "crossroad.svg",
+      "sha256": "0bd1616f915baedd3a30c31301c8e865222a43b7f5df971df5d94a75e3c17716"
+    },
+    {
+      "path": "docs/docs/metrics_st.md",
+      "sha256": "476654f18fa9e6e42c7ca0f2321020fc3260c143608371e46c6849896794872c"
+    },
+    {
+      "path": "docs/docs/ns/Global/dt/SpriteDef_typ_st.md",
+      "sha256": "6da6125383e0e418bba580a77b5b48951ea3c7a97f962a5d1072554c8e4076a8"
+    },
+    {
+      "path": "docs/docs/ns/Global/fb/Sprite_st.md",
+      "sha256": "dc34efbb2a413debcb480f97b3a657b571204ad2e3fbd3cbc7e2c67642a8b1c9"
+    },
+    {
+      "path": "docs/docs/ns/Global/fc/isSpriteColliding_st.md",
+      "sha256": "8e5c2e45bae13cdb25ed8ec824db4f61ea3c91448632fc26a57548284792d2fa"
+    },
+    {
+      "path": "docs/docs/ns/Global/nsMain_st.md",
+      "sha256": "d6848327fa4c43a21528f3909112d7b9a2faea5c5166996afba19e87454adc4a"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/dt/trafficLightCars_st.md",
+      "sha256": "e4151b0b1ed363711c559c922f6c5af0f0b6a316e569583a62b5eccb696269ad"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/dt/trafficLightPed_st.md",
+      "sha256": "01541abb7edf994266b57e07a6b362099ab27d7878dbcf87986dd04cb3878143"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/nsMain_st.md",
+      "sha256": "1bcd1f85901baa900a9f6b4999a7b82cd8d35955f850878f0c41691ad51a467a"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/prg/main_st.md",
+      "sha256": "e6c9449c0961783e90b684845d5d569f16ed4885df61fedfe789f0f2f49bb555"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/prg/simulator_st.md",
+      "sha256": "164ff40ff8aab0eb530200fa4f7a3bedf5ad69eb8301267d578d41cbe9bf0783"
+    },
+    {
+      "path": "docs/docs/ns/nsList_st.md",
+      "sha256": "6ba6afe42cfca6c0fba45445c52454083c37d7ccec787902277c9c35d165365a"
+    },
+    {
+      "path": "docs/index_st.md",
+      "sha256": "56ad6802aa2cbb05ff3bcbe82fe08d430dfbe6ac9c91abc10dc830a33a09a913"
+    },
+    {
+      "path": "plc_traffic_control.project",
+      "sha256": "9ed27f53695155c6928d44536bcebea73c524263f6d39a0d1e76a7b9f1568544"
+    },
+    {
+      "path": "plc_traffic_control.xml",
+      "sha256": "18a22aa4619382f82c11a764f38c8bd5a2210e4e8a803a0cccee9cd4b08261ae"
+    },
+    {
+      "path": "screenshot.gif",
+      "sha256": "fd6a2fec703070589f8cf24b1b99710f52a42a5f676d67a126067ff2bfd48ba8"
+    },
+    {
+      "path": "screenshot.png",
+      "sha256": "a8741b886ffba55825d26df3896b8716ff64fb0e48f743cfd4ddbf966f9ae923"
+    }
+  ]
+}

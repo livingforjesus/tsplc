@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+# Keep the shell entrypoint on the same shared config and artifact protocol.
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+exec bun "$root/src/cli.ts" "$@"

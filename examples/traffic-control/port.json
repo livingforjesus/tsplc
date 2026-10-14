@@ -1,0 +1,85 @@
+{
+  "source": "upstream/plc_traffic_control.xml",
+  "objects": [
+    {
+      "kind": "type",
+      "name": "SpriteDef_typ",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "type",
+      "name": "trafficLightCars",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "type",
+      "name": "trafficLightPed",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "function",
+      "name": "isSpriteColliding",
+      "paths": ["src/geometry.ts"]
+    },
+    {
+      "kind": "functionBlock",
+      "name": "Sprite",
+      "paths": ["src/sprite.ts"]
+    },
+    {
+      "kind": "program",
+      "name": "simulator",
+      "paths": ["src/simulator.ts", "src/sprites.ts", "src/state.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.CHECK_COLLISSIONS",
+      "paths": ["src/collisions.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.MOVE_CARS",
+      "paths": ["src/movement.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.MOVE_PEDESTRIANS",
+      "paths": ["src/movement.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.UPDATE_OBJECTS",
+      "paths": ["src/simulator.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.CONTROL_LIGHTS",
+      "paths": ["src/lights.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.FAULT_MONITOR",
+      "paths": ["src/faults.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.BLINK_DANGER_SIGNAL",
+      "paths": ["src/lights.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simulator.BLINK_YELLOW_SIGNAL",
+      "paths": ["src/lights.ts"]
+    },
+    {
+      "kind": "program",
+      "name": "main",
+      "paths": ["src/controller.ts", "src/main.ts"]
+    },
+    {
+      "kind": "globals",
+      "name": "gIO",
+      "paths": ["src/gIO.ts"]
+    }
+  ]
+}

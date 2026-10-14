@@ -1,0 +1,8 @@
+{
+  "source": "../frame-assembly/templates/local.project",
+  "sourceSha256": "d5b3e8695154aed0d4194efcb3a4d2d812cb890089c8b0c63972d8e6636c7111",
+  "project": "virtual.project",
+  "sha256": "63d1ccba5cedb2267a9239120351a3df707c46804a1fca800432cd3d26254606",
+  "codesys": "CODESYS V3.5 SP22 Patch 3",
+  "addedLibrary": "Util, 3.5.22.0 (System)"
+}

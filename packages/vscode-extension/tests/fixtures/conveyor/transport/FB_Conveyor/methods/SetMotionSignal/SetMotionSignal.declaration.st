@@ -1,0 +1,7 @@
+METHOD PUBLIC SetMotionSignal
+VAR_INPUT
+	Asserted : BOOL;
+END_VAR
+VAR
+	CardIndex : UINT;
+END_VAR

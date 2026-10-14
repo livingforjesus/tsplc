@@ -1,0 +1,64 @@
+{
+  "name": "@vplc/compiler",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./ir": {
+      "types": "./ir/index.ts",
+      "bun": "./ir/index.ts",
+      "default": "./dist/ir.js"
+    },
+    "./codesys": {
+      "types": "./backends/codesys/index.ts",
+      "bun": "./backends/codesys/index.ts",
+      "default": "./dist/codesys.js"
+    },
+    "./project": {
+      "types": "./project/index.ts",
+      "bun": "./project/index.ts",
+      "default": "./dist/project.js"
+    },
+    "./math": {
+      "types": "./stdlib/math.ts",
+      "bun": "./stdlib/math.ts",
+      "default": "./dist/math.js"
+    },
+    "./types": {
+      "types": "./types/index.d.ts",
+      "default": "./types/index.d.ts"
+    },
+    "./globals": {
+      "types": "./types/globals.d.ts",
+      "default": "./types/globals.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "ir",
+    "backends",
+    "project",
+    "types",
+    "stdlib"
+  ],
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "dependencies": {
+    "@vplc/build": "workspace:*",
+    "@vplc/config": "workspace:*",
+    "@vplc/typegen": "workspace:*",
+    "typescript": "6.0.3",
+    "zod": "4.3.6",
+    "jiti": "2.7.0",
+    "@types/bun": "1.4.2"
+  },
+  "bin": {
+    "vplc": "./dist/cli.js"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "repository": "https://github.com/tkucic/plc_garden_controller",
+  "revision": "ef3e937c8ead73a7078925b0da32fca59c85379b",
+  "license": "MIT",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "8808a2f8c12973a1db53cec4b1d1ae659691edd2df85369d03beafa71097a937"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "bb8ee1657e3ea6880f53d9e95b6e26052c0a2799e13904b6563d898615dad1cd"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e4d04cddbf540015df6a63009a4fd1d802d5e59fe6256cde8f1cdb9178721315"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3fab350633497b24dafe2c18f5e702f924a56a1f8d93ffa7f26abeeff71a3ae8"
+    },
+    {
+      "path": "background.png",
+      "sha256": "7c001cd69392d10ff96a3a04b6836e08ca65a5e3a0a0583241bdf065affa0479"
+    },
+    {
+      "path": "background.svg",
+      "sha256": "198389810f2cb33df6dee14268ae7af958ecba29e53168bf3ba229508756e2e6"
+    },
+    {
+      "path": "background.xcf",
+      "sha256": "60de8cfb5419672ee9d6a564d6d00e3acbf799ad14272a1162130aae34ba4cfc"
+    },
+    {
+      "path": "docs/docs/metrics_st.md",
+      "sha256": "128e54d0178e45a90dddf53efc8402ef7d6438c701b918375afe338bc6f92993"
+    },
+    {
+      "path": "docs/docs/ns/Global/dt/Flower_typ_st.md",
+      "sha256": "965d002e8d00e65e0d3bc97d5939abed015b4ace5c89dc6723926cdb9d5b1ecc"
+    },
+    {
+      "path": "docs/docs/ns/Global/dt/Platform_typ_st.md",
+      "sha256": "1ead8b500eba93fe562551f52b35241260f99002a61aac49c98b422eafd9dcce"
+    },
+    {
+      "path": "docs/docs/ns/Global/fb/ClockPulse_st.md",
+      "sha256": "5fb160a01a7ceb684fe6fa8d10ff046beca3a2ab67b29b45b9e98437817746f9"
+    },
+    {
+      "path": "docs/docs/ns/Global/fc/BYTES_TO_DWORD_st.md",
+      "sha256": "6fbaeb1ecac6a04b07a8fc40ea8e014d4ef75084c9bd29da5195870919549593"
+    },
+    {
+      "path": "docs/docs/ns/Global/fc/checkOverlapRectangle_st.md",
+      "sha256": "533479614f8764e3c841bc55d239c5523c5e15b27db0ee127de7ae3d3f2359b5"
+    },
+    {
+      "path": "docs/docs/ns/Global/nsMain_st.md",
+      "sha256": "8daed45631f1a1588654fc0cf3cc20056b85beab92ea312378d79a4ed82e79e6"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/dt/HMI_Cmds_typ_st.md",
+      "sha256": "9cca2db14eedd379e8abd4961a5acf4fe8c79073cf5ecad64639d9b36facd07d"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/fb/AutomaticFlowerWatering_st.md",
+      "sha256": "3e6fc3f4f7a153551124705819d0579178ba6c7f6e44ac21dc090a05fc32a312"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/nsMain_st.md",
+      "sha256": "194a8a04fc32d72e9d8fe10ffb3517d721eb163f89472bae94ac6441d0d97f67"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/prg/main_st.md",
+      "sha256": "7ed034f4e0bd24b43a73fd817ba706a34cae756efe5e2905525d3f746d4ad020"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/prg/simu_st.md",
+      "sha256": "cfb2d8b3d04f162be575bdd7bfb4880a2dacc15748a81ff5a903955b2979cbf7"
+    },
+    {
+      "path": "docs/docs/ns/nsList_st.md",
+      "sha256": "69b10d5c14e6d77a59910265faf042c3e387972216d033498aacf1c4313f58cf"
+    },
+    {
+      "path": "docs/index_st.md",
+      "sha256": "e2bc9d57a8c2135c5620fe7a4357197fd92b95e16a0563cd594e5705f5fe8ec0"
+    },
+    {
+      "path": "plc_garden_controller.project",
+      "sha256": "4de5a3bf4adc47c00854346f1022b698f8356d0647bfef0fbdb3fa683d7d2e0f"
+    },
+    {
+      "path": "plc_garden_controller.xml",
+      "sha256": "81268c93af7613c77e42a2a6167d712829c744a58a6f5c4fe690f4419f2d900d"
+    },
+    {
+      "path": "screenshot.gif",
+      "sha256": "23c9da802113b0844dac7975926d41780da0381508444b9642c75db2081eb48f"
+    },
+    {
+      "path": "screenshot.png",
+      "sha256": "5fffaa2e29df22bfa17fa654feb4aa4092cd5265c3bb5ca04183bf060e0eb034"
+    },
+    {
+      "path": "servoAssembly.svg",
+      "sha256": "4fd0296c3b181e5c866d6ca859edde7b642eef887ae3bf7ece1dd0800379eaba"
+    },
+    {
+      "path": "servoAssemblyVertical.svg",
+      "sha256": "126257d2152542b1548f17ebffcef64eb4cf02be43d89a81dcdf76d8a58b4800"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+# The dynamic loader selects the matching library for each Wine process.
+export LD_PRELOAD='/opt/vplc-wine-compat/$LIB/signal-state.so'"${LD_PRELOAD:+:$LD_PRELOAD}"
+exec /opt/wine-devel/bin/wine "$@"

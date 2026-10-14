@@ -1,0 +1,58 @@
+diff --git a/dist/hostname.js b/dist/hostname.js
+index 2c2d9ae1b2c9332646446066f4d01a7e41bf7af3..96d2b5b3cadcb8e982392211f167c7802dcf3b3c 100644
+--- a/dist/hostname.js
++++ b/dist/hostname.js
+@@ -17,13 +17,17 @@ function fqdn(callback) {
+         if (err1) {
+             return callback(err1);
+         }
+-        dns.lookupService(ip, 0, (err2, _fqdn) => {
+-            if (err2) {
+-                return callback(err2);
+-            }
+-            _fqdn = _fqdn.replace(".localdomain", "");
+-            callback(null, _fqdn);
+-        });
++        try {
++            dns.lookupService(ip, 0, (err2, _fqdn) => {
++                if (err2) {
++                    return callback(err2);
++                }
++                _fqdn = _fqdn.replace(".localdomain", "");
++                callback(null, _fqdn);
++            });
++        } catch (err) {
++            callback(err instanceof Error ? err : new Error(String(err)));
++        }
+     });
+ }
+ let _fullyQualifiedDomainNameInCache;
+diff --git a/source/hostname.ts b/source/hostname.ts
+index 409870aebe6a86b83b91e5c18519e76a4daac96a..811ed1d4725b1589d49bd7b03df4ae403bff3f81 100644
+--- a/source/hostname.ts
++++ b/source/hostname.ts
+@@ -21,13 +21,17 @@ function fqdn(callback: (err: Error | null, fqdn?: string) => void): void {
+             return callback(err1);
+         }
+ 
+-        dns.lookupService(ip, 0, (err2: Error | null, _fqdn: string) => {
+-            if (err2) {
+-                return callback(err2);
+-            }
+-            _fqdn = _fqdn.replace(".localdomain", "");
+-            callback(null, _fqdn);
+-        });
++        try {
++            dns.lookupService(ip, 0, (err2: Error | null, _fqdn: string) => {
++                if (err2) {
++                    return callback(err2);
++                }
++                _fqdn = _fqdn.replace(".localdomain", "");
++                callback(null, _fqdn);
++            });
++        } catch (err) {
++            callback(err instanceof Error ? err : new Error(String(err)));
++        }
+     });
+ }
+ 

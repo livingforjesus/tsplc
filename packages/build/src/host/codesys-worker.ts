@@ -1,0 +1,345 @@
+// Engineering CLI lifecycle and diagnostics.
+import { createHash, randomUUID } from "node:crypto";
+import {
+  access,
+  copyFile,
+  mkdir,
+  open,
+  readFile,
+  rename,
+  rm,
+  unlink,
+  writeFile,
+} from "node:fs/promises";
+import { resolve } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
+import { z } from "zod";
+import type { ResolvedConfig } from "../config";
+import { CodesysCompilerError, compilerDiagnosticSchema } from "../diagnostics";
+import { packageDirectory } from "../package-path";
+import { codesysCommand, getHostCommand } from "./codesys-command";
+import { createCodesysHost } from "./codesys-host";
+
+const pythonDirectory = resolve(packageDirectory, "python");
+
+const sessionSchema = z.object({
+  directory: z.string(),
+  fingerprint: z.string(),
+  pid: z.int().positive(),
+});
+
+type Session = z.infer<typeof sessionSchema>;
+
+type WorkerCommand = { action: "build" | "online" | "ping" | "stop" };
+
+const hasCode = (error: unknown, code: string) =>
+  error instanceof Error && "code" in error && error.code === code;
+
+const isProcessAlive = (pid: number) => {
+  try {
+    // Signal 0 checks process existence and permissions without killing it.
+    // Only ESRCH means it is gone; permission errors must still propagate.
+    process.kill(pid, 0);
+    return true;
+  } catch (error) {
+    if (hasCode(error, "ESRCH")) {
+      return false;
+    }
+    throw error;
+  }
+};
+
+const readJson = async (path: string): Promise<unknown> => {
+  try {
+    return JSON.parse(await readFile(path, "utf8"));
+  } catch (error) {
+    if (hasCode(error, "ENOENT")) {
+      return undefined;
+    }
+    throw error;
+  }
+};
+
+const writeJson = async (path: string, value: unknown) => {
+  // Readers may poll while we write. A temporary file in the same directory
+  // lets rename publish the complete JSON atomically, without exposing partial data.
+  const temporary = `${path}.${randomUUID()}.tmp`;
+  await writeFile(temporary, JSON.stringify(value, null, 2));
+  await rename(temporary, path);
+};
+
+/** Serializes startup and builds across CLI processes, including separate terminals. */
+export const withWorkerLock = async <T>(
+  config: Pick<ResolvedConfig, "outDir" | "timeouts">,
+  run: () => Promise<T>,
+) => {
+  await mkdir(resolve(config.outDir, ".codesys"), { recursive: true });
+  const path = resolve(config.outDir, ".codesys/command.lock");
+  const deadline = Date.now() + config.timeouts.build + config.timeouts.startup;
+  while (true) {
+    const lock = await open(path, "wx").catch((error: unknown) => {
+      if (hasCode(error, "EEXIST")) {
+        return;
+      }
+      throw error;
+    });
+
+    if (lock) {
+      try {
+        await lock.writeFile(String(process.pid));
+        return await run();
+      } finally {
+        await lock.close();
+        await unlink(path);
+      }
+    }
+
+    const owner = Number(
+      await readFile(path, "utf8").catch((error: unknown) => {
+        if (hasCode(error, "ENOENT")) {
+          return "";
+        }
+        throw error;
+      }),
+    );
+    if (owner > 0 && !isProcessAlive(owner)) {
+      // Do not race another client by deleting a lock that it may have replaced.
+      throw new Error(`An interrupted command left ${path}. Remove that lock file and retry.`);
+    }
+    if (Date.now() >= deadline) {
+      throw new Error(`Timed out waiting for another CODESYS command (${path})`);
+    }
+    await delay(200);
+  }
+};
+
+/** The caller holds withWorkerLock throughout a command, so the mailbox has one writer. */
+export const createCodesysWorker = (config: ResolvedConfig) => {
+  const host = createCodesysHost(config);
+  const statePath = resolve(config.outDir, ".codesys/session.json");
+  const verifiedProcesses = new Set<number>();
+
+  const readSession = async (): Promise<Session | undefined> => {
+    const value = await readJson(statePath);
+    if (value === undefined) {
+      return undefined;
+    }
+    const session = sessionSchema.safeParse(value);
+    if (!session.success) {
+      throw new Error(`Invalid CODESYS session file: ${statePath}`, {
+        cause: session.error,
+      });
+    }
+    return session.data;
+  };
+
+  const terminate = async (session: Session) => {
+    if (isProcessAlive(session.pid)) {
+      await host.terminate(session.pid).catch((error: unknown) => {
+        if (isProcessAlive(session.pid)) {
+          throw error;
+        }
+      });
+    }
+    // Let the launcher reap its child before another error handler or CLI
+    // checks this PID. Sending a second group kill can otherwise race exit.
+    const deadline = Date.now() + config.timeouts.terminate;
+    while (isProcessAlive(session.pid)) {
+      if (Date.now() >= deadline) {
+        throw new Error("CODESYS launcher did not exit after termination");
+      }
+      await delay(50);
+    }
+  };
+
+  const request = async (session: Session, command: WorkerCommand, timeoutMs: number) => {
+    const id = randomUUID();
+    const reply = resolve(session.directory, `${id}.json`);
+    await writeJson(resolve(session.directory, "request.json"), {
+      ...command,
+      id,
+    });
+    const deadline = Date.now() + timeoutMs;
+    while (true) {
+      const result = await readJson(reply);
+      if (result !== undefined) {
+        await unlink(reply);
+        const response = z
+          .object({
+            error: z.string().optional(),
+            diagnostics: z.array(compilerDiagnosticSchema).optional(),
+            id: z.literal(id),
+            ok: z.boolean(),
+          })
+          .safeParse(result);
+        if (!response.success) {
+          throw new Error("CODESYS returned an invalid worker response", {
+            cause: response.error,
+          });
+        }
+        verifiedProcesses.add(session.pid);
+        if (!response.data.ok) {
+          const message = response.data.error ?? "CODESYS build failed";
+          if (response.data.diagnostics) {
+            throw new CodesysCompilerError(message, response.data.diagnostics);
+          }
+          throw new Error(message);
+        }
+        return;
+      }
+      if (!isProcessAlive(session.pid)) {
+        throw new Error(
+          `CODESYS exited before completing ${command.action}. See ${session.directory}/codesys.log`,
+        );
+      }
+      if (Date.now() >= deadline) {
+        // A saved PID can belong to another process after a reboot. Only kill
+        // a process we launched or whose worker answered in this invocation.
+        if (!verifiedProcesses.has(session.pid)) {
+          throw new Error(
+            `CODESYS ${command.action} timed out without a worker response. Close the dedicated IDE if it is still running, then retry. Log: ${session.directory}/codesys.log`,
+          );
+        }
+        await terminate(session);
+        throw new Error(
+          `CODESYS ${command.action} timed out after ${timeoutMs} ms; the worker was stopped. See ${session.directory}/codesys.log`,
+        );
+      }
+      await delay(200);
+    }
+  };
+
+  const launch = async () => {
+    await access(config.codesys.executable);
+    const fingerprint = createHash("sha256")
+      .update(
+        JSON.stringify({
+          builder: await readFile(resolve(pythonDirectory, "build.py"), "utf8"),
+          online: await readFile(resolve(pythonDirectory, "codesys_online.py"), "utf8"),
+          command: codesysCommand,
+          codesys: config.codesys,
+          launcher: getHostCommand(config.codesys),
+          worker: await readFile(resolve(pythonDirectory, "worker.py"), "utf8"),
+        }),
+      )
+      .digest("hex");
+    const previous = await readSession();
+    if (previous && isProcessAlive(previous.pid)) {
+      if (previous.fingerprint !== fingerprint) {
+        throw new Error(
+          "CODESYS settings or worker scripts changed. Run stop-worker, then launch-worker to reload them.",
+        );
+      }
+      await request(previous, { action: "ping" }, config.timeouts.startup);
+      console.log(
+        `Reusing CODESYS worker (${previous.pid}). Log: ${previous.directory}/codesys.log`,
+      );
+      return previous;
+    }
+
+    const directory = resolve(config.outDir, ".codesys/worker");
+    await rm(directory, { recursive: true, force: true });
+    await mkdir(directory, { recursive: true });
+    await copyFile(resolve(pythonDirectory, "build.py"), resolve(directory, "build.py"));
+    await copyFile(resolve(pythonDirectory, "worker.py"), resolve(directory, "worker.py"));
+    await copyFile(
+      resolve(pythonDirectory, "codesys_online.py"),
+      resolve(directory, "codesys_online.py"),
+    );
+    console.log(`Starting CODESYS. Log: ${directory}/codesys.log`);
+    const pid = await host.startWorker(directory);
+    const session = { directory, fingerprint, pid };
+    verifiedProcesses.add(pid);
+    try {
+      await writeJson(statePath, session);
+      await request(session, { action: "ping" }, config.timeouts.startup);
+    } catch (error) {
+      await terminate(session);
+      throw error;
+    }
+    console.log(`CODESYS worker ready (${session.pid})`);
+    return session;
+  };
+
+  const checkExit = async (session: Session) => {
+    const status = await host.exitStatus(session.directory, session.pid);
+    if (!status) {
+      throw new Error(
+        `CODESYS launcher stopped but its exit status is unavailable. See ${session.directory}/codesys.log`,
+      );
+    }
+    if (status.code !== 0 || status.signal !== null) {
+      throw new Error(
+        `CODESYS launcher exited with ${status.signal ?? status.code ?? "unknown status"}. See ${session.directory}/codesys.log`,
+      );
+    }
+  };
+
+  const stop = async () => {
+    const session = await readSession();
+    if (!session) {
+      console.log("CODESYS worker is already stopped");
+      return;
+    }
+    if (!isProcessAlive(session.pid)) {
+      await checkExit(session);
+      console.log("CODESYS worker is already stopped");
+      return;
+    }
+    await request(session, { action: "stop" }, config.timeouts.stop);
+    const deadline = Date.now() + config.timeouts.stop;
+    while (isProcessAlive(session.pid)) {
+      if (Date.now() >= deadline) {
+        const message = `CODESYS stop timed out after ${config.timeouts.stop} ms. See ${session.directory}/codesys.log`;
+        try {
+          await terminate(session);
+        } catch (cause) {
+          throw new Error(`${message}; the worker could not be terminated`, { cause });
+        }
+        throw new Error(`${message}; the worker required forced termination`);
+      }
+      await delay(200);
+    }
+    await checkExit(session);
+    console.log("CODESYS worker stopped");
+  };
+
+  return { launch, request, stop };
+};
+
+/** Container jobs own a temporary worker; always stop it before returning a result. */
+export const withWorkerShutdown = async <T>(
+  config: ResolvedConfig,
+  worker: Pick<ReturnType<typeof createCodesysWorker>, "stop">,
+  operation: () => Promise<T>,
+) => {
+  const stop = async () => {
+    try {
+      await withWorkerLock(config, () => worker.stop());
+    } finally {
+      await rm(resolve(config.outDir, ".codesys/session.json"), { force: true });
+    }
+  };
+  return Promise.resolve()
+    .then(operation)
+    .then(
+      async (result) => {
+        await stop();
+        return result;
+      },
+      async (failure: unknown) => {
+        await stop().catch((shutdownFailure: unknown) => {
+          // Diagnostic mapping follows cause; keep the operation there and
+          // expose its shutdown failure alongside it in errors.
+          throw new AggregateError(
+            [failure, shutdownFailure],
+            "CODESYS operation and worker shutdown failed",
+            {
+              cause: failure,
+            },
+          );
+        });
+        throw failure;
+      },
+    );
+};

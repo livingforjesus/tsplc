@@ -1,0 +1,5 @@
+.plcts/
+build/
+node_modules/
+templates/*.~u
+templates/*_project.*

@@ -1,0 +1,737 @@
+$ EZ-EDS Version 3.9 Generated Electronic Data Sheet
+
+[File]
+        DescText = "DataMan 300 Series Reader";
+        CreateDate = 06-01-2011;
+        CreateTime = 09:00:00;
+        ModDate = 09-03-2015;
+        ModTime = 15:35:10;
+        Revision = 1.2;
+        HomeURL = "http://www.cognex.com/";
+
+[Device]
+        VendCode = 678;
+        VendName = "Cognex";
+        ProdType = 773;
+        ProdTypeStr = "DataMan 300 Series Reader";
+        ProdCode = 1290;
+        MajRev = 1;
+        MinRev = 5;
+        ProdName = "DataMan 300 Series Reader";
+        Catalog = "DMR-3XX-00";
+        Icon = "DM300.ico";
+
+[Device Classification]
+        Class1 = EtherNetIP;
+
+[Params]
+        Param2 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Input Size",
+                "Bytes",
+                "",
+                2,500,496,
+                ,,,,
+                ,,,,
+                ;
+        Param3 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Output Size",
+                "Bytes",
+                "",
+                2,500,496,
+                ,,,,
+                ,,,,
+                ;
+
+        Param4 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Trigger Enable",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param5 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Trigger",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param6 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Buffer Results Enable",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param7 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Results Ack",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param9 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 0",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param10 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 1",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param11 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 2",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param12 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 3",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param13 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 4",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param14 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 5",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param15 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 6",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param16 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event 7",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param17 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "User Data Option",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param18 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "User Data Length",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param19 =
+                0,
+                ,,
+                0x0000,
+                0xD1,
+                1,
+                "User Data",
+                "",
+                "",
+                0,255,0,
+                ,,,,
+                ,,,,
+                ;
+
+        Param22 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Trigger Ready",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param23 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Trigger Ack",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param24 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Acquiring",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param25 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Missed Acq",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param26 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Decoding",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param27 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Decode Complete",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param28 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Results Buffer Overrun",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param29 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Results Available",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param30 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "General Fault",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param31 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 0",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param32 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 1",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param33 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 2",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param34 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 3",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param35 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 4",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param36 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 5",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param37 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 6",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param38 =
+                0,
+                ,,
+                0x0000,
+                0xC1,
+                1,
+                "Soft Event Ack 7",
+                "",
+                "",
+                0,1,0,
+                ,,,,
+                ,,,,
+                ;
+        Param39 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Trigger ID",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param40 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Result ID",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param41 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Result Code",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param42 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Result Extended",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param43 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Result Length",
+                "",
+                "",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                ;
+        Param44 =
+                0,
+                ,,
+                0x0000,
+                0xD1,
+                1,
+                "Result Data",
+                "",
+                "",
+                0,255,0,
+                ,,,,
+                ,,,,
+                ;
+
+[Assembly]
+        Assem11 =
+                "input format",
+                ,
+                ,
+                0x0000,
+                ,,
+                1,Param22,              $ Trigger Ready
+                1,Param23,              $ Trigger Ack
+                1,Param24,              $ Acquiring
+                1,Param25,              $ Missed Acq
+                4,,                     $ Reserved
+
+                1,Param26,              $ Decoding
+                1,Param27,              $ Decode Complete
+                1,Param28,              $ Results Buffer Overrun
+                1,Param29,              $ Results Available
+                3,,                     $ Reserved
+                1,Param30,              $ General Fault
+
+                1,Param31,              $ Soft Event Ack 0
+                1,Param32,              $ Soft Event Ack 1
+                1,Param33,              $ Soft Event Ack 2
+                1,Param34,              $ Soft Event Ack 3
+                1,Param35,              $ Soft Event Ack 4
+                1,Param36,              $ Soft Event Ack 5
+                1,Param37,              $ Soft Event Ack 6
+                1,Param38,              $ Soft Event Ack 7
+
+                24,,                    $ Reserved
+
+                16,Param39,             $ Trigger ID
+
+                16,Param40,             $ Result ID
+                16,Param41,             $ Result Code
+
+                16,Param42,             $ Result Extended
+                16,Param43,             $ Result Length
+
+                3872,Param44;           $ Result Data
+
+        Assem21 =
+                "output format",
+                ,
+                ,
+                0x0000,
+                ,,
+                1,Param4,               $ Trigger Enable
+                1,Param5,               $ Trigger
+                1,Param6,               $ Buffer Results Enable
+                1,Param7,               $ Results Ack
+                4,,                     $ Reserved
+
+                1,Param9,               $ Soft Event 0
+                1,Param10,              $ Soft Event 1
+                1,Param11,              $ Soft Event 2
+                1,Param12,              $ Soft Event 3
+                1,Param13,              $ Soft Event 4
+                1,Param14,              $ Soft Event 5
+                1,Param15,              $ Soft Event 6
+                1,Param16,              $ Soft Event 7
+
+                16,,                    $ Reserved
+
+                16,Param17,             $ User Data Option
+                16,Param18,             $ User Data Length
+
+                3936,Param19;           $ User Data
+
+[Connection Manager]
+        Connection1 =
+                0x04010002,             $ trigger & transport
+                                        $  
+                                        $  value  bits
+                                        $    2:   0-15 = supported transport classes (class 1)
+                                        $    1:     16 = cyclic (1 = supported)
+                                        $    0:     17 = change of state (0 = not supported)
+                                        $    0:     18 = on demand (0 = not supported)
+                                        $    0:  19-23 = reserved (must be zero)
+                                        $    4:  24-27 = exclusive owner
+                                        $    0:  28-30 = reserved (must be zero)
+                                        $    0:     31 = client 0 (don't care for classes 0 and 1)
+                                        $  
+                0x44640405,             $ connection parameters
+                                        $  
+                                        $  value  bits
+                                        $    1:      0 = O=>T fixed (1 = supported)
+                                        $    0:      1 = O=>T variable (0 = not supported)
+                                        $    1:      2 = T=>O fixed (1 = supported)
+                                        $    0:      3 = T=>O variable (0 = not supported)
+                                        $    0:    4-7 = reserved (must be zero)
+                                        $    4:   8-11 = O=>T header (4 byte run/idle)
+                                        $    0:  12-15 = T=>O header (no header)
+                                        $    4:  16-19 = O=>T connection type (point-to-point)
+                                        $    6:  20-23 = T=>O connection type (multicast, point-to-point)
+                                        $    4:  24-27 = O=>T priority (scheduled)
+                                        $    4:  28-31 = T=>O priority (scheduled)
+                                        $  
+                ,Param3,Assem21,        $ O=>T RPI,Size,Format
+                ,Param2,Assem11,        $ T=>O RPI,Size,Format
+                ,,                      $ config part 1 (not used)
+                ,,                      $ config part 2 (not used)
+                "Consume Data From/Produce Data To",    $ connection name
+                "",                     $ Help string
+                "20 04 24 01 2C 15 2C 0B";
+
+        Connection2 =
+                0x02010002,             $ trigger & transport
+                                        $  
+                                        $  value  bits
+                                        $    2:   0-15 = supported transport classes (class 1)
+                                        $    1:     16 = cyclic (1 = supported)
+                                        $    0:     17 = change of state (0 = not supported)
+                                        $    0:     18 = on demand (0 = not supported)
+                                        $    0:  19-23 = reserved (must be zero)
+                                        $    2:  24-27 = input only
+                                        $    0:  28-30 = reserved (must be zero)
+                                        $    0:     31 = client 0 (don't care for classes 0 and 1)
+                                        $  
+                0x44640305,             $ connection parameters
+                                        $  
+                                        $  value  bits
+                                        $    1:      0 = O=>T fixed (1 = supported)
+                                        $    0:      1 = O=>T variable (0 = not supported)
+                                        $    1:      2 = T=>O fixed (1 = supported)
+                                        $    0:      3 = T=>O variable (0 = not supported)
+                                        $    0:    4-7 = reserved (must be zero)
+                                        $    3:   8-11 = O=>T header (0 byte heartbeat)
+                                        $    0:  12-15 = T=>O header (no header)
+                                        $    4:  16-19 = O=>T connection type (point-to-point)
+                                        $    6:  20-23 = T=>O connection type (multicast,point-to-point)
+                                        $    4:  24-27 = O=>T priority (scheduled)
+                                        $    4:  28-31 = T=>O priority (scheduled)
+                                        $  
+                ,0,,                    $ O=>T RPI,Size,Format
+                ,Param2,Assem11,        $ T=>O RPI,Size,Format
+                ,,                      $ config part 1 (not used)
+                ,,                      $ config part 2 (not used)
+                "Consume Data From",    $ connection name
+                "",                     $ Help string
+                "20 04 24 01 2C FE 2C 0B";    $ inputs only path
+
+        Connection3 =
+                0x04010002,             $ trigger & transport
+                                        $  
+                                        $  value  bits
+                                        $    2:   0-15 = supported transport classes (class 1)
+                                        $    1:     16 = cyclic (1 = supported)
+                                        $    0:     17 = change of state (0 = not supported)
+                                        $    0:     18 = on demand (0 = not supported)
+                                        $    0:  19-23 = reserved (must be zero)
+                                        $    4:  24-27 = exclusive owner
+                                        $    0:  28-30 = reserved (must be zero)
+                                        $    0:     31 = client 0 (don't care for classes 0 and 1)
+                                        $  
+                0x44443405,             $ connection parameters
+                                        $  
+                                        $  value  bits
+                                        $    1:      0 = O=>T fixed (1 = supported)
+                                        $    0:      1 = O=>T variable (0 = not supported)
+                                        $    1:      2 = T=>O fixed (1 = supported)
+                                        $    0:      3 = T=>O variable (0 = not supported)
+                                        $    0:    4-7 = reserved (must be zero)
+                                        $    4:   8-10 = O=>T header (4 byte run/idle)
+                                        $    0:     11 = reserved (must be zero)
+                                        $    3:  12-14 = T=>O header  (0 byte heartbeat)
+                                        $    0:     15 = reserved (must be zero)
+                                        $    4:  16-19 = O=>T connection type (point-to-point)
+                                        $    4:  20-23 = T=>O connection type (point-to-point)
+                                        $    4:  24-27 = O=>T priority (scheduled)
+                                        $    4:  28-31 = T=>O priority (scheduled)
+                                        $  
+                ,Param3,Assem21,        $ O=>T RPI,Size,Format
+                ,0,,                    $ T=>O RPI,Size,Format
+                ,,                      $ config part 1 (not used)
+                ,,                      $ config part 2 (not used)
+                "Produce Data To",      $ connection name
+                "",                     $ Help string
+                "20 04 24 01 2C 15 2C FE";    $ outputs only path
+
+[Port]
+        Port1 =
+                TCP,
+                "EtherNet/IP port",
+                "20 F5 24 01",
+                1;
+

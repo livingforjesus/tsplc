@@ -1,0 +1,11 @@
+--- a/dlls/ncrypt/main.c
++++ b/dlls/ncrypt/main.c
+@@ -269,7 +269,7 @@
+         return NTE_BAD_FLAGS;
+     }
+ 
+-    if (flags & NCRYPT_NO_PADDING_FLAG || flags & NCRYPT_PAD_OAEP_FLAG)
++    if (flags & NCRYPT_NO_PADDING_FLAG)
+     {
+         FIXME("No padding and oaep padding not supported\n");
+         return NTE_NOT_SUPPORTED;

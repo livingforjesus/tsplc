@@ -1,0 +1,17 @@
+export enum E_LineStation {
+  Unknown = 0,
+  Oversize = 1,
+  Canvas = 2,
+  Framing01 = 3,
+  Framing02 = 4,
+  Framing03 = 5,
+  Framing04 = 6,
+  Framing05 = 7,
+  Framing06 = 8,
+  Framing07 = 9,
+  Framing08 = 10,
+  Framing09 = 11,
+  Framing10 = 12,
+  Framing11 = 13,
+  Framing12 = 14,
+}

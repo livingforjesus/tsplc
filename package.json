@@ -1,0 +1,38 @@
+{
+  "name": "vplc",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.3",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "test": "bun test packages tests --timeout 20000",
+    "typecheck": "tsc --noEmit",
+    "vplc": "bun packages/compiler/project/cli.ts",
+    "build": "bun scripts/build.ts",
+    "check": "bun run typecheck && bun run lint && bun run check:format && bun run test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check:format": "prettier --check .",
+    "pack": "bun run build && bun scripts/pack.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "1.4.2",
+    "@types/node": "24.10.4",
+    "@vplc/build": "workspace:*",
+    "@vplc/compiler": "workspace:*",
+    "@vplc/config": "workspace:*",
+    "@vplc/typegen": "workspace:*",
+    "esbuild": "0.27.4",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.10",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.71.2"
+  },
+  "patchedDependencies": {
+    "node-opcua-hostname@2.184.0": "patches/node-opcua-hostname@2.184.0.patch"
+  }
+}

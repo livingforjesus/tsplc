@@ -1,0 +1,45 @@
+{
+  "name": "@vplc/typegen",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./codegen": {
+      "types": "./src/codegen/generate.ts",
+      "bun": "./src/codegen/generate.ts",
+      "default": "./dist/codegen.js"
+    },
+    "./hardware": {
+      "types": "./src/hardware.ts",
+      "bun": "./src/hardware.ts",
+      "default": "./dist/hardware.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src/index.ts",
+    "src/project.ts",
+    "src/hardware.ts",
+    "src/cli.ts",
+    "src/codegen/generate.ts",
+    "src/codegen/parser.ts",
+    "src/codegen/constants.ts"
+  ],
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "dependencies": {
+    "@vplc/config": "workspace:*",
+    "prettier": "3.9.10"
+  },
+  "devDependencies": {
+    "iconv-lite": "0.5.2"
+  },
+  "bin": {
+    "vplc-typegen": "./dist/cli.js"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@vplc/example-frame-assembly",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check-sources": "vplc check --config vplc.config.ts",
+    "emit": "vplc build --config vplc.config.ts --emit-only",
+    "build": "vplc build --config vplc.config.ts",
+    "typecheck": "tsc --noEmit --project tsconfig.host.json"
+  },
+  "dependencies": {
+    "@vplc/compiler": "workspace:*",
+    "@vplc/config": "workspace:*"
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "verifiedAt": "2026-10-13",
+  "method": "Execution-free existing format-aware library_metadata.read_source_metadata; native OpenSSL checksum/signature checks; no CODESYS, Wine or vendor assembly loaded",
+  "readerSourceSHA256": {
+    "library_metadata.py": "8ba46ed0c76e798344e2c491d40bbd7fd12565c5f2a22b80d5f0d0a031f88043",
+    "library_integrity.py": "5bd9f124a9530bf405bee3230d311af3ec59350607f49ea528dcf06e67d56777",
+    "library_records.py": "ce29b03f15bdc3861702035e1db2b35fc943161c9d20af05371d1639f5c2d3d1"
+  },
+  "reaInitialProbe": {
+    "tool": "open_binary",
+    "path": "/Users/Apple/Documents/Codex/2026-10-12/in-desktop-work-codesys-build-goal-2/work/library-metadata-probe/Standard.compiled-library-v3",
+    "result": "target_unavailable: supplied custom library format not opened by REA"
+  },
+  "artifacts": [
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/Standard.compiled-library-v3",
+      "identity": {
+        "title": "Standard",
+        "version": "3.5.22.0",
+        "company": "System"
+      },
+      "defaultNamespacePresent": false,
+      "defaultNamespace": null,
+      "placeholder": "Standard",
+      "provenance": {
+        "bytes": 239072,
+        "sha256": "a68412c2fac752f906faf716fef3301a8e4f2fda9a9009bca484081f77e183e6",
+        "plaintextBytes": 238987,
+        "plaintextSHA256": "087d64188ba77b78779bf997163cd3118d5135acf152c5ccc15efcda8b00b080",
+        "format": "CODESYS public-checksum embedded-signature envelope / ZIP shared-string records",
+        "checksumVerified": true,
+        "schemaTableSHA256": "23272b69cb9579f2ce99073c4d7df4c256473abdb1e946ea61774c254542b240",
+        "stringTableSHA256": "218289d8483552ee027356999e9852059b3a2790c15874c3c8382d312fe1726c"
+      },
+      "signatureChecks": {
+        "containerMagic": "a7d5a610-ef6b-4da0-b4de-2c309fbc0bc5",
+        "signatureFormat": "CCL SigBlock 859 version 1",
+        "signatureVerified": true,
+        "archiveDigestVerified": true,
+        "certificatePublicKeyMatches": true,
+        "publisherTrustVerified": false,
+        "timestampTrustVerified": false
+      },
+      "inventory": {
+        "entryCount": 104,
+        "metaCount": 38,
+        "objectCount": 38,
+        "sharedTablesPresent": true,
+        "manifestInfoDependencyNamedEntries": []
+      },
+      "rootManager": {
+        "present": false,
+        "objectIdentity": null,
+        "directReferences": [],
+        "placeholderRedirections": [],
+        "evidence": {
+          "absence": "No Library Manager type in complete paired object inventory",
+          "recordInventory": {
+            "complete": true,
+            "objectCount": 38,
+            "managerCount": 0
+          }
+        }
+      },
+      "projectInformationEvidence": {
+        "identity": {
+          "name": "Project Information",
+          "guid": "11c0fc3a-9bcf-4dd8-ac38-efb93363e521",
+          "parent": "00000000-0000-0000-0000-000000000000",
+          "object": "11c0fc3a-9bcf-4dd8-ac38-efb93363e521.object",
+          "objectSHA256": "611a063ad64077b5c18d4792dcff9cc97c30aeeacd52f978fb0ddacc60e5825a",
+          "metadataSHA256": "c8cafa12c4e01883b8afc4d613210142c0f46fd2e29d6f0c054144f5b1a3574a",
+          "metadataSchema": 5,
+          "sourceSchema": 9,
+          "typeGuid": "085afe48-c5d8-4ea5-ab0d-b35701fa6009"
+        },
+        "payloadSHA256": "551793b72d6e15011fab182e93085e9e5f1b0a1e5818560a0ca55bed28b6de89",
+        "payloadBytes": 370
+      }
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/Util.compiled-library-v3",
+      "identity": {
+        "title": "Util",
+        "version": "3.5.22.0",
+        "company": "System"
+      },
+      "defaultNamespacePresent": true,
+      "defaultNamespace": "",
+      "placeholder": "Util",
+      "provenance": {
+        "bytes": 5048816,
+        "sha256": "bbeb3679e14b450a9f2b97d8a51c709bf36b4efc1f241e3d9fa369433cf3ddd4",
+        "plaintextBytes": 5048727,
+        "plaintextSHA256": "da3d098236d8432b61df7d3d2a7f2614ccbbd8f229279c3261b1fe4336a117d4",
+        "format": "CODESYS public-checksum embedded-signature envelope / ZIP shared-string records",
+        "checksumVerified": true,
+        "schemaTableSHA256": "7b68212fcac18fdd04de61dbd6838472792925b4eabcfa07350e87686c309771",
+        "stringTableSHA256": "1eb60073db0ca9378fbfda48fe2361f5c234bfb4a7241f46fbe54504267cf9e0"
+      },
+      "signatureChecks": {
+        "containerMagic": "a7d5a610-ef6b-4da0-b4de-2c309fbc0bc5",
+        "signatureFormat": "CCL SigBlock 859 version 1",
+        "signatureVerified": true,
+        "archiveDigestVerified": true,
+        "certificatePublicKeyMatches": true,
+        "publisherTrustVerified": false,
+        "timestampTrustVerified": false
+      },
+      "inventory": {
+        "entryCount": 673,
+        "metaCount": 262,
+        "objectCount": 262,
+        "sharedTablesPresent": true,
+        "manifestInfoDependencyNamedEntries": []
+      },
+      "rootManager": {
+        "present": true,
+        "objectIdentity": {
+          "name": "Libraries",
+          "guid": "cc861807-6685-4501-b7ad-78b00b3f2246",
+          "parent": "00000000-0000-0000-0000-000000000000",
+          "object": "cc861807-6685-4501-b7ad-78b00b3f2246.object",
+          "objectSHA256": "2289e95b8f73abf770a54fae775dc4f4bf37877cd5807f1ca410b5e261a4cee4",
+          "metadataSHA256": "97d84f1bf544edd1ef1b452dd2c38fb093ecd57684feb9c6787d9f7bda48cc6b",
+          "metadataSchema": 2,
+          "sourceSchema": 18,
+          "typeGuid": "adb5cb65-8e1d-4a00-b70a-375ea27582f3"
+        },
+        "directReferences": [
+          {
+            "kind": "placeholder",
+            "identity": {
+              "title": "Standard",
+              "version": "*",
+              "company": "System",
+              "serialized": "Standard, * (System)"
+            },
+            "namespace": "Standard",
+            "qualifiedOnly": false,
+            "placeholder": "Standard",
+            "resolverGuid": "b303f5ce-75ff-4668-a777-7da8debb449c",
+            "flags": {
+              "Optional": false,
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            },
+            "params": [],
+            "serializedFields": {
+              "DefaultResolution": "Standard, * (System)",
+              "Optional": false,
+              "Params": [],
+              "PlaceholderName": "Standard",
+              "ResolverGuid": "b303f5ce-75ff-4668-a777-7da8debb449c",
+              "Id": 4069456034,
+              "Namespace": "Standard",
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            }
+          },
+          {
+            "kind": "placeholder",
+            "identity": {
+              "title": "SysMem",
+              "version": "*",
+              "company": "System",
+              "serialized": "SysMem, * (System)"
+            },
+            "namespace": "SysMem",
+            "qualifiedOnly": false,
+            "placeholder": "SysMem",
+            "resolverGuid": "b303f5ce-75ff-4668-a777-7da8debb449c",
+            "flags": {
+              "Optional": false,
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            },
+            "params": [],
+            "serializedFields": {
+              "DefaultResolution": "SysMem, * (System)",
+              "Optional": false,
+              "Params": [],
+              "PlaceholderName": "SysMem",
+              "ResolverGuid": "b303f5ce-75ff-4668-a777-7da8debb449c",
+              "Id": 900809037,
+              "Namespace": "SysMem",
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            }
+          },
+          {
+            "kind": "managed",
+            "identity": {
+              "title": "SysTypes2 Interfaces",
+              "version": "*",
+              "company": "System",
+              "serialized": "SysTypes2 Interfaces, * (System)"
+            },
+            "namespace": "SysTypes",
+            "qualifiedOnly": false,
+            "placeholder": null,
+            "resolverGuid": null,
+            "flags": {
+              "Optional": false,
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            },
+            "params": [],
+            "serializedFields": {
+              "Optional": false,
+              "Params": [],
+              "Name": "SysTypes2 Interfaces, * (System)",
+              "Id": 1197178540,
+              "Namespace": "SysTypes",
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            }
+          },
+          {
+            "kind": "placeholder",
+            "identity": {
+              "title": "SysTimeRtc",
+              "version": "*",
+              "company": "System",
+              "serialized": "SysTimeRtc, * (System)"
+            },
+            "namespace": "SysTimeRtc",
+            "qualifiedOnly": false,
+            "placeholder": "SysTimeRtc",
+            "resolverGuid": "b303f5ce-75ff-4668-a777-7da8debb449c",
+            "flags": {
+              "Optional": true,
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            },
+            "params": [],
+            "serializedFields": {
+              "DefaultResolution": "SysTimeRtc, * (System)",
+              "Optional": true,
+              "Params": [],
+              "PlaceholderName": "SysTimeRtc",
+              "ResolverGuid": "b303f5ce-75ff-4668-a777-7da8debb449c",
+              "Id": 3812646429,
+              "Namespace": "SysTimeRtc",
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            }
+          },
+          {
+            "kind": "managed",
+            "identity": {
+              "title": "CmpErrors2 Interfaces",
+              "version": "*",
+              "company": "System",
+              "serialized": "CmpErrors2 Interfaces, * (System)"
+            },
+            "namespace": "CmpErrors",
+            "qualifiedOnly": false,
+            "placeholder": null,
+            "resolverGuid": null,
+            "flags": {
+              "Optional": false,
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            },
+            "params": [],
+            "serializedFields": {
+              "Optional": false,
+              "Params": [],
+              "Name": "CmpErrors2 Interfaces, * (System)",
+              "Id": 961088924,
+              "Namespace": "CmpErrors",
+              "SystemLibrary": false,
+              "HideWhenReferencedAsDependency": false,
+              "PublishSymbolsInContainer": false,
+              "QualifiedOnly": false,
+              "LinkAllContent": false
+            }
+          }
+        ],
+        "placeholderRedirections": [],
+        "evidence": {
+          "payloadSHA256": "e007095b488e4dd260c1400a5d4500e5d61561056a68d5e571a2620342803c06",
+          "payloadBytes": 128
+        }
+      },
+      "projectInformationEvidence": {
+        "identity": {
+          "name": "Project Information",
+          "guid": "11c0fc3a-9bcf-4dd8-ac38-efb93363e521",
+          "parent": "00000000-0000-0000-0000-000000000000",
+          "object": "11c0fc3a-9bcf-4dd8-ac38-efb93363e521.object",
+          "objectSHA256": "1ee72461aa81d6fc19089d98a11a026689801c4d1c2e39e53244e1813a54e6af",
+          "metadataSHA256": "940e8fdb791f58c4bfc5d1c068d551742356091acb53f1670c05d8aa6f67c98c",
+          "metadataSchema": 2,
+          "sourceSchema": 15,
+          "typeGuid": "085afe48-c5d8-4ea5-ab0d-b35701fa6009"
+        },
+        "payloadSHA256": "c93132def25165997be2252c878abb5ce1fe083dedc797662e6d015222a2c713",
+        "payloadBytes": 490
+      }
+    }
+  ],
+  "httpProbes": [
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/index",
+      "status": 200,
+      "bytes": 30,
+      "contentType": null,
+      "etag": "\"1e-65d39c7be7c3b\"",
+      "text": "Standard.compiled-library-v3\r\n"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/metadata",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/metadata.json",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/dependencies",
+      "status": 200,
+      "bytes": 0,
+      "contentType": null,
+      "etag": "\"0-64dc4ea5990e0\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/dependencies.json",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/dependencies/index",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/index.json",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/manifest.json",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/Standard.compiled-library-v3.libinfo",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/Standard.compiled-library-v3.json",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/metadata.json",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/dependencies/index",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/metadata/index",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/dependencies/index",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/index",
+      "status": 200,
+      "bytes": 26,
+      "contentType": null,
+      "etag": "\"1a-65d39c7ee7649\"",
+      "text": "Util.compiled-library-v3\r\n"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/Util.compiled-library-v3",
+      "status": 200,
+      "bytes": 5048816,
+      "contentType": null,
+      "etag": "\"4d09f0-64d6f33e6a5bb\"",
+      "sha256": "bbeb3679e14b450a9f2b97d8a51c709bf36b4efc1f241e3d9fa369433cf3ddd4"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/dependencies",
+      "status": 200,
+      "bytes": 102,
+      "text": "#Standard\r\n#SysMem\r\nSysTypes2 Interfaces, * (System)\r\n#SysTimeRtc\r\nCmpErrors2 Interfaces, * (System)\r\n",
+      "etag": "\"66-64dc4ea6310be\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.9.0/dependencies",
+      "status": 200,
+      "bytes": 20,
+      "text": "#Standard\r\n#SysMem\r\n",
+      "etag": "\"14-53539b5f9ac80\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.0.0.0/dependencies",
+      "status": 200,
+      "bytes": 0,
+      "text": "",
+      "etag": "\"0-51a6e37b6b9c0\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/description",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/info",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/properties",
+      "status": 404
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysMem/index",
+      "status": 200,
+      "bytes": 93,
+      "text": "3.0.0.0\r\n3.0.0.2\r\n3.0.2.0\r\n3.1.3.1\r\n3.2.0.0\r\n3.3.2.50\r\n3.5.12.0\r\n3.5.17.0\r\n3.5.4.0\r\n3.5.5.0\r\n",
+      "etag": "\"5d-65d39c7d6e1e5\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysTypes2%20Interfaces/index",
+      "status": 200,
+      "bytes": 19,
+      "text": "3.5.17.0\r\n3.5.4.0\r\n",
+      "etag": "\"13-65d39c7ebc218\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/CmpErrors2%20Interfaces/index",
+      "status": 200,
+      "bytes": 88,
+      "text": "3.5.11.0\r\n3.5.12.0\r\n3.5.15.0\r\n3.5.17.0\r\n3.5.19.0\r\n3.5.21.0\r\n3.5.22.0\r\n3.5.5.0\r\n3.5.9.0\r\n",
+      "etag": "\"58-65d39c781dcbf\""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysMem/3.5.17.0/dependencies",
+      "status": 200,
+      "bytes": 34,
+      "text": "SysTypes2 Interfaces, * (System)\r\n"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysTypes2%20Interfaces/3.5.17.0/dependencies",
+      "status": 200,
+      "bytes": 0,
+      "text": ""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/CmpErrors2%20Interfaces/3.5.22.0/dependencies",
+      "status": 200,
+      "bytes": 0,
+      "text": ""
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysTimeRtc/index",
+      "status": 200,
+      "bytes": 96,
+      "text": "3.4.0.0\r\n3.4.1.20\r\n3.4.3.0\r\n3.5.0.0\r\n3.5.1.0\r\n3.5.17.0\r\n3.5.20.0\r\n3.5.21.30\r\n3.5.22.0\r\n3.5.5.0\r\n"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysMem/3.5.17.0/index",
+      "status": 200,
+      "bytes": 28,
+      "text": "SysMem.compiled-library-v3\r\n"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/SysTypes2%20Interfaces/3.5.17.0/index",
+      "status": 200,
+      "bytes": 36,
+      "text": "SysTypes2_Itfs.compiled-library-v3\r\n"
+    },
+    {
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/CmpErrors2%20Interfaces/3.5.22.0/index",
+      "status": 200,
+      "bytes": 37,
+      "text": "CmpErrors2_Itfs.compiled-library-v3\r\n"
+    }
+  ]
+}

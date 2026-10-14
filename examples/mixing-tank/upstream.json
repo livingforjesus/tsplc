@@ -1,0 +1,79 @@
+{
+  "repository": "https://github.com/tkucic/plc_hello_mixing_tank",
+  "revision": "17e0213b1c7c46fd44ff7d9a52a6bb9e500d65de",
+  "license": "MIT",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "8808a2f8c12973a1db53cec4b1d1ae659691edd2df85369d03beafa71097a937"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "bb8ee1657e3ea6880f53d9e95b6e26052c0a2799e13904b6563d898615dad1cd"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e4d04cddbf540015df6a63009a4fd1d802d5e59fe6256cde8f1cdb9178721315"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c8611280e2f6450aee38e6b7a6d783d5cb9b27e7b78925434185fd3976854162"
+    },
+    {
+      "path": "docs/docs/metrics_st.md",
+      "sha256": "ebefd17c428b8097229273bbe9eb60b445374867430c065d3c5ce99674e2c859"
+    },
+    {
+      "path": "docs/docs/ns/Global/fb/GenericBistableDeviceModel_st.md",
+      "sha256": "e6cb97087d1d9ca63c1ed1e7a6046ac4a154071508ca6e0283a79068470921b6"
+    },
+    {
+      "path": "docs/docs/ns/Global/nsMain_st.md",
+      "sha256": "7657d871a8488c4fef1d51ace83f62370eecf5e20320f932b4da86c6fef2773d"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/dt/AUTO_SEQUENCE_st.md",
+      "sha256": "7f8e2aa95bccba8f5602ed80b7d081ecaad0ecdc4a8e65b3d332030f191bffc0"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/dt/MODES_st.md",
+      "sha256": "04f97bb1205bb2d5821f8ac19226fb85e1a74d6fe13ae189808cf98471716d35"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/nsMain_st.md",
+      "sha256": "3ad6f40aa09b74e6738ff22dfc295e90e5db1dd0d0d72818a2477f2fb10e0413"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/prg/main_st.md",
+      "sha256": "3f0297949a24dcc5594d8cbf27f89a23dc6358c593b5d8037a625173f7b54d29"
+    },
+    {
+      "path": "docs/docs/ns/SoftPLC_Application/prg/simulator_st.md",
+      "sha256": "2a4bb55cb8a82fc3f60e520ccf1a6e902453a31fdbc1a44ba62685dfe5a4677f"
+    },
+    {
+      "path": "docs/docs/ns/nsList_st.md",
+      "sha256": "51264333e7aa07319c77ed846a7e12728362b332fed4b43e1716555875575ec6"
+    },
+    {
+      "path": "docs/index_st.md",
+      "sha256": "172973fb7ed39359695f2db7337e27b741bad1f9298a3c56a14c7adc9a7a8099"
+    },
+    {
+      "path": "plc_hello_mixing_tank.project",
+      "sha256": "9656fa0942b625c2540e1bbe05ae0abafee2f3d8b00819a053041f3675396d14"
+    },
+    {
+      "path": "plc_hello_mixing_tank.xml",
+      "sha256": "a5211ebec5274dc8325e3d50dd28d274cad26eb27abdffe7bcf57c2ef9054e74"
+    },
+    {
+      "path": "screenshot.gif",
+      "sha256": "5560e48472ea9f5a46c2e8aed54b6f65bf20030f358ddb331b7f5dac6fd92045"
+    },
+    {
+      "path": "screenshot.png",
+      "sha256": "9be7b0d73b651dc63de35dee8678d2c9e1d5a308a946f37ba3947837321f205a"
+    }
+  ]
+}

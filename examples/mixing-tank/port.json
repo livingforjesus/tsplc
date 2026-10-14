@@ -1,0 +1,40 @@
+{
+  "source": "upstream/plc_hello_mixing_tank.xml",
+  "objects": [
+    {
+      "kind": "type",
+      "name": "MODES",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "type",
+      "name": "AUTO_SEQUENCE",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "functionBlock",
+      "name": "GenericBistableDeviceModel",
+      "paths": ["src/device-model.ts"]
+    },
+    {
+      "kind": "program",
+      "name": "simulator",
+      "paths": ["src/simulator.ts"]
+    },
+    {
+      "kind": "program",
+      "name": "main",
+      "paths": ["src/controller.ts", "src/main.ts"]
+    },
+    {
+      "kind": "globals",
+      "name": "IO",
+      "paths": ["src/IO.ts"]
+    },
+    {
+      "kind": "globals",
+      "name": "HMI",
+      "paths": ["src/HMI.ts"]
+    }
+  ]
+}

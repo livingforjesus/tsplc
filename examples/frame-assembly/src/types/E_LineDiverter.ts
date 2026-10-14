@@ -1,0 +1,17 @@
+export enum E_LineDiverter {
+  Unknown = 0,
+  Oversize = 1,
+  Canvas = 2,
+  FramingPair01 = 3,
+  FramingPair02 = 4,
+  FramingPair03 = 5,
+  FramingPair04 = 6,
+  FramingPair05 = 7,
+  FramingPair06 = 8,
+  EmptyBinCollection = 9,
+  QualityControl = 10,
+  Carrier01 = 11,
+  Carrier02 = 12,
+  Carrier03 = 13,
+  Carrier04 = 14,
+}

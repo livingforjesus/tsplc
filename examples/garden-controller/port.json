@@ -1,0 +1,103 @@
+{
+  "source": "upstream/plc_garden_controller.xml",
+  "objects": [
+    {
+      "kind": "type",
+      "name": "Flower_typ",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "type",
+      "name": "Platform_typ",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "type",
+      "name": "HMI_Cmds_typ",
+      "paths": ["src/types.ts"]
+    },
+    {
+      "kind": "function",
+      "name": "BYTES_TO_DWORD",
+      "paths": ["src/color.ts"]
+    },
+    {
+      "kind": "functionBlock",
+      "name": "ClockPulse",
+      "paths": ["src/clock.ts"]
+    },
+    {
+      "kind": "function",
+      "name": "checkOverlapRectangle",
+      "paths": ["src/geometry.ts"]
+    },
+    {
+      "kind": "program",
+      "name": "simu",
+      "paths": [
+        "src/simulator.ts",
+        "src/flower.ts",
+        "src/platform.ts",
+        "src/gardens/garden1.ts",
+        "src/gardens/garden2.ts",
+        "src/gardens/garden3.ts",
+        "src/gardens/garden4.ts"
+      ]
+    },
+    {
+      "kind": "action",
+      "name": "simu.SIMULATE_GARDEN1",
+      "paths": ["src/simulator.ts", "src/flower.ts", "src/platform.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simu.SIMULATE_GARDEN2",
+      "paths": ["src/simulator.ts", "src/flower.ts", "src/platform.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simu.SIMULATE_GARDEN3",
+      "paths": ["src/simulator.ts", "src/flower.ts", "src/platform.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "simu.SIMULATE_GARDEN4",
+      "paths": ["src/simulator.ts", "src/flower.ts", "src/platform.ts"]
+    },
+    {
+      "kind": "program",
+      "name": "main",
+      "paths": ["src/main.ts", "src/controller.ts", "src/routes.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "main.CONTROL_GARDEN1",
+      "paths": ["src/controller.ts", "src/routes.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "main.CONTROL_GARDEN2",
+      "paths": ["src/controller.ts", "src/routes.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "main.CONTROL_GARDEN3",
+      "paths": ["src/controller.ts", "src/routes.ts"]
+    },
+    {
+      "kind": "action",
+      "name": "main.CONTROL_GARDEN4",
+      "paths": ["src/controller.ts", "src/routes.ts"]
+    },
+    {
+      "kind": "functionBlock",
+      "name": "AutomaticFlowerWatering",
+      "paths": ["src/watering.ts"]
+    },
+    {
+      "kind": "globals",
+      "name": "gIO",
+      "paths": ["src/gIO.ts"]
+    }
+  ]
+}

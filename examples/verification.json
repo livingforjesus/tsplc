@@ -1,0 +1,563 @@
+{
+  "kind": "plcts-example-verification",
+  "recordedAt": "2026-10-09T08:29:13.845844+00:00",
+  "workspace": "/Users/Apple/Desktop/Work/plc-ts",
+  "installation": "CODESYS V3.5 SP22 Patch 3 / codesys-build 0.2.0 / Wine",
+  "importedTotals": {
+    "repositories": 3,
+    "files": 67,
+    "sourceObjects": 41,
+    "structuredTextBodyLines": 1559
+  },
+  "checks": {
+    "repository": {
+      "command": "bun run check",
+      "passed": true,
+      "tests": 168,
+      "assertions": 4752
+    },
+    "sourceCoverage": {
+      "command": "bun test tests/upstream-examples.test.ts",
+      "passed": true,
+      "tests": 7,
+      "assertions": 405
+    },
+    "packageInstallation": {
+      "command": "bun run package && bun run check:packages",
+      "passed": true
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 171,
+      "warningRule": "lint/style/noNonNullAssertion",
+      "scope": "existing compiler/IR/test code; new imported example code passes without warnings"
+    }
+  },
+  "artifactIntegrity": {
+    "freshInMemoryEmissionMatchesCurrentSource": true,
+    "structuredTextFiles": 223,
+    "manifestOwnedFiles": 243,
+    "configurationAndMappingsMatch": true
+  },
+  "ownedCodesysWorkers": "All four recorded process IDs verified exited",
+  "examples": [
+    {
+      "name": "frame-assembly",
+      "directory": "/Users/Apple/Desktop/Work/plc-ts/examples/frame-assembly",
+      "vendorCompilation": {
+        "kind": "plcts-build",
+        "version": 1,
+        "generatedAt": "2026-10-09T03:01:33.365Z",
+        "configFile": "/Users/Apple/Desktop/Work/plc-ts/examples/frame-assembly/vplc.config.ts",
+        "status": "vendor-compiled",
+        "vendor": {
+          "application": "Application",
+          "tasks": [
+            {
+              "name": "MainTask",
+              "intervalNanoseconds": "20000000",
+              "priority": 1,
+              "programs": ["Main"]
+            }
+          ]
+        }
+      },
+      "receiptSha256": "b8a0d65755204e77f4f1f983878dcd8796037b084733dfec69ae874e58090079",
+      "artifactManifestSha256": "9b5d50190f2b7d46699dc0fb08cf66b6c09fc3f09ec93e5f93d2bad8cd20b0ca",
+      "artifactCount": 68,
+      "artifactHashesVerified": true,
+      "vendorArtifacts": [
+        {
+          "path": "vendor/Application.app",
+          "sha256": "6541f31de8d1d63a39dcbf8113695818ae2fcaeaece660006933a4f03b7fb266"
+        },
+        {
+          "path": "vendor/Application.crc",
+          "sha256": "3dd3966ba4fdef49f8fd1e3b15294a8b5bc220a34d39ba11049f86fc94fe50ee"
+        },
+        {
+          "path": "vendor/Application.project",
+          "sha256": "137b275ba1a07b39b2fb70e9a9b16962c061939582907482ced60174daa6a127"
+        }
+      ],
+      "maintainedSource": [
+        {
+          "path": "src/Main.ts",
+          "sha256": "32b511210ab0354bb3947dd99f23a959604036b3c9b0ce6877aa39034d8b2a23"
+        },
+        {
+          "path": "src/diverters/FB_Diverter/FB_Diverter.ts",
+          "sha256": "1708c89327d211cb9338ccb978b1ad4fc3a422371623eaee1bf1404cb6ee5f8d"
+        },
+        {
+          "path": "src/diverters/F_DiverterRoute.ts",
+          "sha256": "660ac3bdd7918d2c6112cd30a2103150f73675c3f8476d8639166145e696ec6f"
+        },
+        {
+          "path": "src/diverters/F_StationAvailable.ts",
+          "sha256": "df57212d56f99ead8bd496af9536f27d7a5f44bba93d5a075a5c4247729c5de3"
+        },
+        {
+          "path": "src/diverters/PRG_Diverters.ts",
+          "sha256": "356ae04ce77c2ac5f1fa7c487b3d8b7ae157e33da2b0fb509f8f2f927f971cf1"
+        },
+        {
+          "path": "src/globals/LineCollections.ts",
+          "sha256": "10503b0e2d4fa1e4979b69eb7319ad3384ad74e366dc9baf6dc7439cc780f3fb"
+        },
+        {
+          "path": "src/globals/LineConstants.ts",
+          "sha256": "a00e274d979927340bf17023829d66f62a3496b9b23065c6a4d7e0539c99293d"
+        },
+        {
+          "path": "src/globals/LineIO.ts",
+          "sha256": "39f6af0304cbc4e8872541b8b25ab6f0185be42fd0df9425f9bfdeec0de2175f"
+        },
+        {
+          "path": "src/globals/LineScannerRequests.ts",
+          "sha256": "c0154d94c7ce29d3e64dbfdf88c7c339f655d26914f6a06108aeeaa1f1779540"
+        },
+        {
+          "path": "src/globals/LineStations.ts",
+          "sha256": "da32a880fe0cb72f09fca9b4cf8130d7a821b12b2f616281b21ba936721d6357"
+        },
+        {
+          "path": "src/lifts/FB_LineLift/FB_LineLift.ts",
+          "sha256": "c055422114cc50bdd3b3caa0caccd06556e8cc66c609246b1b8dc7b784df5b42"
+        },
+        {
+          "path": "src/scanners/FB_LineScannerForDivert/FB_LineScannerForDivert.ts",
+          "sha256": "7a33cd4f791157cd651b005fc4a3d79b96e4be4f545e43e9cad43fdef08a6fe0"
+        },
+        {
+          "path": "src/scanners/PRG_LineScanners.ts",
+          "sha256": "5f091e4fc3a7b0f4e96cb1597a62f8b14b25d59ac9f2ff6d3c64eb3e0270409a"
+        },
+        {
+          "path": "src/transport/FB_LineConveyor/FB_LineConveyor.ts",
+          "sha256": "636ceba12a48192bc725e514087c9f470dcf726ec9237085a5b1e5038c1b39e8"
+        },
+        {
+          "path": "src/transport/PRG_ConveyorSetup.ts",
+          "sha256": "38e909efb2fdfc11ab6e89f9b8ca6539f7e81c2893547fa5dd62a1959cfbf732"
+        },
+        {
+          "path": "src/types/E_LineCarrier.ts",
+          "sha256": "474a858dfad4ecdf09eb5e83e64c10d06ccb999ffb3f9393f512f374de6259e3"
+        },
+        {
+          "path": "src/types/E_LineDiverter.ts",
+          "sha256": "29a7b226135cf4228a483e8e95b30420cf022ac559bc0a547348c49485cd8ecd"
+        },
+        {
+          "path": "src/types/E_LineLiftCommand.ts",
+          "sha256": "b43fd033a2c1feca96cee01c73834820da077631cb1902d2b086048df41be226"
+        },
+        {
+          "path": "src/types/E_LineLiftPosition.ts",
+          "sha256": "2a11cffda23097abd640e8180c28055e3066970531c3cc384a839cba6828a39a"
+        },
+        {
+          "path": "src/types/E_LineStation.ts",
+          "sha256": "6ca43a266f0135ff6f1c848266f690e05d55e8a90e71997da2d15848dbfc3e4e"
+        },
+        {
+          "path": "src/types/ST_LineAlarm.ts",
+          "sha256": "a3c56fe5a4f331d50138ed2fcfd5cd4ec3d3e8f535e667ea650c24f37e1049f5"
+        },
+        {
+          "path": "src/types/ST_LineButton.ts",
+          "sha256": "859132c024fe284e83e24883cf4621e6c6586fc9b8d3f5511c7ca8d79e7fc441"
+        },
+        {
+          "path": "src/types/ST_LineCS1001/ST_LineCS1001.ts",
+          "sha256": "2976c8512f375c799724e6ffa0869047bc3656adf254dd19af00d9a82c78245d"
+        },
+        {
+          "path": "src/types/ST_LineCS1001/ST_LineCS1001Input.ts",
+          "sha256": "025cc3a3d05e30b33953aa885599b8b512d4e66d311196ebc50e426b337556b0"
+        },
+        {
+          "path": "src/types/ST_LineCS1001/ST_LineCS1001Output.ts",
+          "sha256": "942951c347b0a5e9fe81cb73a0154e40ec09c29f7ad161a1d7ad1c82220bed86"
+        },
+        {
+          "path": "src/types/ST_LineCollection.ts",
+          "sha256": "e84dfb2404a873ada38cc17b4e2472ef29a17c758d230597af9b168bdd6ccf8f"
+        },
+        {
+          "path": "src/types/ST_LineConveyor/ST_LineConveyor.ts",
+          "sha256": "f5aa124cee14183c0e0d22785c691aedfb51d3965abd52cffd3cb11daffb86ed"
+        },
+        {
+          "path": "src/types/ST_LineDiverter/ST_LineDiverter.ts",
+          "sha256": "f1b2f9f115ddddb85d73d76a0b2cbc3ba02c115754f9ebedc91698c091c3e2b3"
+        },
+        {
+          "path": "src/types/ST_LineDiverter/ST_LineDiverterRouting.ts",
+          "sha256": "446422729a4b2865904e1d33f594e3520a1398f472bf902e67c9ab56c16c3d0a"
+        },
+        {
+          "path": "src/types/ST_LineDiverter/ST_LineDiverterStatus.ts",
+          "sha256": "bcd8ca00ba360edafe467a4c9f507d52f92bdb28a8a3409c1f6b33f99f39708a"
+        },
+        {
+          "path": "src/types/ST_LineEstop.ts",
+          "sha256": "29607fc1cf9e5547ecac3510e3a4e471e27248701b8d3c55f0cf666848992622"
+        },
+        {
+          "path": "src/types/ST_LineLift/ST_LineLift.ts",
+          "sha256": "833e00479610bbfe6f3d895124ed069391cbd67d43003b92194a8b20ac6d87be"
+        },
+        {
+          "path": "src/types/ST_LineLift/ST_LineLiftInput.ts",
+          "sha256": "590998b49bf0cde132a98f6833957a9be2921117c2bfaa44b49b2e58cd7f483c"
+        },
+        {
+          "path": "src/types/ST_LineLift/ST_LineLiftOutput.ts",
+          "sha256": "add03ceba293494ff9a0802023b7bcb2ef34de4f56577bb56cda1048404eac9d"
+        },
+        {
+          "path": "src/types/ST_LineLift/ST_LineLiftStatus.ts",
+          "sha256": "0b90debb90031fc4c90ae05812bc01a2d061ebba21894a27e9524a7cd7942c80"
+        },
+        {
+          "path": "src/types/ST_LineLight.ts",
+          "sha256": "84baf9c420c82373ed7727e915a0cd7b881a62234fc118c2cc8b1ee2d47d1133"
+        },
+        {
+          "path": "src/types/ST_LinePhotoeye.ts",
+          "sha256": "bf33d0895b9e0661fc1ecde17b468c7e8df263705b4b36ddd47a890b02795fda"
+        },
+        {
+          "path": "src/types/ST_LineScanner/ST_LineScanner.ts",
+          "sha256": "d981e6140b265581fcaee340368bb392cd591adaf33e21c8d7d48b8409333de1"
+        },
+        {
+          "path": "src/types/ST_LineScanner/ST_LineScannerInput.ts",
+          "sha256": "9bf748760ba925492c9bb061931e15baf6a8548b4b566443955dd957502ce832"
+        },
+        {
+          "path": "src/types/ST_LineScanner/ST_LineScannerOutput.ts",
+          "sha256": "6340e0591b0905d3ced96c09eaf5af45cea054d68ed8f8c14476d88b234368db"
+        },
+        {
+          "path": "src/types/ST_LineStation.ts",
+          "sha256": "b0be62d79f84187438bba133fd64f5aec8e051b32d46444e795a022d701a1edb"
+        },
+        {
+          "path": "src/types/ST_ScannerRequest.ts",
+          "sha256": "95b7fbb4db154f91b6f1e0d60ebf0cbb2dc2f3f5e77570a83f66ed84b0cd576d"
+        }
+      ]
+    },
+    {
+      "name": "traffic-control",
+      "directory": "/Users/Apple/Desktop/Work/plc-ts/examples/traffic-control",
+      "vendorCompilation": {
+        "kind": "plcts-build",
+        "version": 1,
+        "generatedAt": "2026-10-09T03:12:43.993Z",
+        "configFile": "/Users/Apple/Desktop/Work/plc-ts/examples/traffic-control/vplc.config.ts",
+        "status": "vendor-compiled",
+        "vendor": {
+          "application": "Application",
+          "tasks": [
+            {
+              "name": "MainTask",
+              "intervalNanoseconds": "5000000",
+              "priority": 1,
+              "programs": ["Main"]
+            }
+          ]
+        }
+      },
+      "receiptSha256": "ac95b277d9f1a09f13bf33a74d7db55cc956b7f50c7a048470a3692617adadcd",
+      "artifactManifestSha256": "0a6847b787b36a64fb36a2deffed2569e6a9c425a809e8220f1240582d7c3518",
+      "artifactCount": 70,
+      "artifactHashesVerified": true,
+      "vendorArtifacts": [
+        {
+          "path": "vendor/Application.app",
+          "sha256": "445886ce03615cf0ce58ec6a2c3ff70695e300dd1651cf7d80e845919f65087d"
+        },
+        {
+          "path": "vendor/Application.crc",
+          "sha256": "5b948d2b96c8ed600ca4cb66f71a0d9009cb1e68fbf2371dcc50ef0cb930179f"
+        },
+        {
+          "path": "vendor/Application.project",
+          "sha256": "2cf51b266262df353a382d2125117cf4fda747da30e7453eb1ed599c910090a6"
+        }
+      ],
+      "maintainedSource": [
+        {
+          "path": "src/collisions.ts",
+          "sha256": "1b2f1d38881e9956f8c8240c5c586901bae60b6b510d06a941313f5521ef95b2"
+        },
+        {
+          "path": "src/controller.ts",
+          "sha256": "49d12346d3d4a34fe8de7320a92343109f57e1cdbcce247dde8aa6fea96e9282"
+        },
+        {
+          "path": "src/faults.ts",
+          "sha256": "b602dcbfb40c4b7893c10b9d047b205dc0dc533938e16553476977fb17649ce1"
+        },
+        {
+          "path": "src/gIO.ts",
+          "sha256": "6a9879e0c28a0896372813308836f3ff3a3b5ec8eceaaa3bbe8f5a6d103e2ea7"
+        },
+        {
+          "path": "src/geometry.ts",
+          "sha256": "88a1ea925c9fa110716274b64643bc24cd83dff329313874d9d41b7e9d7a96ee"
+        },
+        {
+          "path": "src/lights.ts",
+          "sha256": "68740331dfbde4909ac7264951cb4d7cdfcb0495050beef8c333331b9e910a5a"
+        },
+        {
+          "path": "src/main.ts",
+          "sha256": "eba3996597e211fe04da836143deeb3a55d6e4adb18260c0e86b2a9e5eb7d328"
+        },
+        {
+          "path": "src/movement.ts",
+          "sha256": "f12b9a3a0a1cf94722f7a87476a70f1218b86840184870c869b7a79ee42860ab"
+        },
+        {
+          "path": "src/simulator.ts",
+          "sha256": "234410f33c0813a784ae2461b220fb3eed0870d9547776a0e1da510b909d9507"
+        },
+        {
+          "path": "src/sprite.ts",
+          "sha256": "8cb0a91472c3a847452befe924dbf04f9e3ffe6c07f7a7a08a53f2a4a5dee0ad"
+        },
+        {
+          "path": "src/sprites.ts",
+          "sha256": "f1c2bcedf3d5b709640c5304bb176988b86cb9e0f4b2e01967c0efb119648176"
+        },
+        {
+          "path": "src/state.ts",
+          "sha256": "ddc9b562acaf31fda258bfb351a04946ef5a86c65b63d9ce1965ae05582ea6dd"
+        },
+        {
+          "path": "src/types.ts",
+          "sha256": "35fbb140087ac8b55ec04654ff6c389317d4c491ebfdc81e0cd1acbd784c8afa"
+        }
+      ],
+      "repository": "https://github.com/tkucic/plc_traffic_control",
+      "revision": "49c9de4e8ce588de3fd7f831e5f78ce6e303c1d9",
+      "license": "MIT",
+      "originalFiles": 22,
+      "originalSourceObjects": 16,
+      "portManifestSha256": "b13fd48072f7657ad3b250f5a1ad985c6d3cd6cc22dfbc6cc35156c52d8ed43b",
+      "upstreamHashesVerified": true
+    },
+    {
+      "name": "mixing-tank",
+      "directory": "/Users/Apple/Desktop/Work/plc-ts/examples/mixing-tank",
+      "vendorCompilation": {
+        "kind": "plcts-build",
+        "version": 1,
+        "generatedAt": "2026-10-09T03:32:21.064Z",
+        "configFile": "/Users/Apple/Desktop/Work/plc-ts/examples/mixing-tank/vplc.config.ts",
+        "status": "vendor-compiled",
+        "vendor": {
+          "application": "Application",
+          "tasks": [
+            {
+              "name": "MainTask",
+              "intervalNanoseconds": "20000000",
+              "priority": 1,
+              "programs": ["Main"]
+            }
+          ]
+        }
+      },
+      "receiptSha256": "be622736e23b2b6da1f42049f40b62056818f7994ae4f33ce7c715c2270a8b9d",
+      "artifactManifestSha256": "7f4c3253e5b30c21515b5ebed36c6c5c8294d605dd23d3b27620860fc9fae171",
+      "artifactCount": 31,
+      "artifactHashesVerified": true,
+      "vendorArtifacts": [
+        {
+          "path": "vendor/Application.app",
+          "sha256": "ed8d6e28dcec9e854e8f54f3e383cc7323593ef2157cf625175d6e59746392b6"
+        },
+        {
+          "path": "vendor/Application.crc",
+          "sha256": "bc214b22d68a604bb7dcd8892974bf2b631b702f56eb538f9e9831bff1a08ec5"
+        },
+        {
+          "path": "vendor/Application.project",
+          "sha256": "b9e8c3deef2b22a55d5ff5f0a6aaac38e69f26cf3d41af44e6b520508d74af8e"
+        }
+      ],
+      "maintainedSource": [
+        {
+          "path": "src/HMI.ts",
+          "sha256": "3baa17f7b6f40ca3a5cecac3c4a1c2189d0dd1461b2d2849b1e9973bf7c85506"
+        },
+        {
+          "path": "src/IO.ts",
+          "sha256": "b62c6dff477032c3ed28ccb09274ee9484c0f5a78daace3084a9d2eec01044a3"
+        },
+        {
+          "path": "src/controller.ts",
+          "sha256": "4c1da29db2ac91b09197d223a791d3c6f6c10d304567803aac66c5c1fbf99c71"
+        },
+        {
+          "path": "src/device-model.ts",
+          "sha256": "e1c5c402f187fbcfe5e5faaaa365417f4ecdb4da13cd141b40ee53d05ac3b27f"
+        },
+        {
+          "path": "src/main.ts",
+          "sha256": "ece00ccfe26f45fddf221ced373628ea9964b833528b29b07703eee12944084e"
+        },
+        {
+          "path": "src/simulator.ts",
+          "sha256": "dca0c74dfb6a62605a9dcd2081b7c0e1b1f664c793b0b8f66349b06ba31d6f04"
+        },
+        {
+          "path": "src/types.ts",
+          "sha256": "b5f058b5262497da22e0fed1712dcd9fcefefca8a74cfbe6714e2479c8c5d15e"
+        }
+      ],
+      "repository": "https://github.com/tkucic/plc_hello_mixing_tank",
+      "revision": "17e0213b1c7c46fd44ff7d9a52a6bb9e500d65de",
+      "license": "MIT",
+      "originalFiles": 18,
+      "originalSourceObjects": 7,
+      "portManifestSha256": "ee27482670524c1d856e1a21b7bc11fd8343608b906a80dd83c3f68ccf42635c",
+      "upstreamHashesVerified": true
+    },
+    {
+      "name": "garden-controller",
+      "directory": "/Users/Apple/Desktop/Work/plc-ts/examples/garden-controller",
+      "vendorCompilation": {
+        "kind": "plcts-build",
+        "version": 1,
+        "generatedAt": "2026-10-09T08:26:34.879Z",
+        "configFile": "/Users/Apple/Desktop/Work/plc-ts/examples/garden-controller/vplc.config.ts",
+        "status": "vendor-compiled",
+        "vendor": {
+          "application": "Application",
+          "tasks": [
+            {
+              "name": "MainTask",
+              "intervalNanoseconds": "20000000",
+              "priority": 1,
+              "programs": ["Main"]
+            }
+          ]
+        }
+      },
+      "receiptSha256": "81ab4c59805cd32342b02b63e345c17686e3483e5d20dca1f80dbccdf409862f",
+      "artifactManifestSha256": "a24f7af3c342ef9f64d103eb7f5aab9054152c3c6deee15c48a504a351355326",
+      "artifactCount": 74,
+      "artifactHashesVerified": true,
+      "vendorArtifacts": [
+        {
+          "path": "vendor/Application.app",
+          "sha256": "fc71e61a23b9772fc9a5d5657410f681b526550e7d526653e9c97fbc559eb06e"
+        },
+        {
+          "path": "vendor/Application.crc",
+          "sha256": "cef54f98f27439695ce1a788594e8c482cac01be10d23c9d0ee98343a02b7fb2"
+        },
+        {
+          "path": "vendor/Application.project",
+          "sha256": "58c12989764c5fb3f2d59dd494fecc9dc7cef84c9bfe741143752c86b3ce165e"
+        }
+      ],
+      "maintainedSource": [
+        {
+          "path": "src/clock.ts",
+          "sha256": "c39900564c4c97b49435a9bafc9e03e173494a0b98a0417971418488fcb0c3ad"
+        },
+        {
+          "path": "src/color.ts",
+          "sha256": "0fecb03790044acb5b7357ac04ff105239e1c1e6ce9782c3d4d7da921682e13d"
+        },
+        {
+          "path": "src/controller.ts",
+          "sha256": "d770d80742e404db8df727b54844132d4a081c3a7b74daed7c44021716ee829c"
+        },
+        {
+          "path": "src/flower.ts",
+          "sha256": "837dd31053febb96ac56043aa627ec0b67aa8c862dcb2d1496adff98b1ecf566"
+        },
+        {
+          "path": "src/gIO.ts",
+          "sha256": "7e5f96ecd8f21492791b96ce4e801a0cce4883f1457fa0aaddf2981b2d0941ea"
+        },
+        {
+          "path": "src/gardens/garden1.ts",
+          "sha256": "f9ce55315feb09f669aa4c3c441fd777a8550707369120a0ce8f96ea37467875"
+        },
+        {
+          "path": "src/gardens/garden2.ts",
+          "sha256": "f2c200790f4f93bb7957a20561d29af14691da1d7a12681043bd4a2df7fcd5c7"
+        },
+        {
+          "path": "src/gardens/garden3.ts",
+          "sha256": "dee065756dd391551b5b4d20c1f0fdbaaeec9fb9478b96d397b6ed847e050c02"
+        },
+        {
+          "path": "src/gardens/garden4.ts",
+          "sha256": "079b1ad435b43aa7b32235c51e835502478ee3441f2c8edd3520c9b971875d60"
+        },
+        {
+          "path": "src/geometry.ts",
+          "sha256": "2986a1dddc6a62a7b7f06f4dddaf012d343230532e39eba6b215682a8ef5530c"
+        },
+        {
+          "path": "src/main.ts",
+          "sha256": "7e9c3be090f705e0d942366aa14aee6dbb26d2539ec1295bfa5d8f796c24f7f9"
+        },
+        {
+          "path": "src/platform.ts",
+          "sha256": "9fc7075df42e3dcbbb6702412533173c5fe2475ac24b951c8d67428ccb14b99e"
+        },
+        {
+          "path": "src/routes.ts",
+          "sha256": "9bdf4e20030649e84333ecede115b589708fa464735a9a459eabea3d984c73d7"
+        },
+        {
+          "path": "src/simulator.ts",
+          "sha256": "6d41ad37a3bd0a5c2fa0c30048a126c6191bc44689efc1f6af2de4a19d9be826"
+        },
+        {
+          "path": "src/types.ts",
+          "sha256": "ac7e74fe180f26b634964d5de6bf6b1e3469bd824e334c159897cb9d28b06746"
+        },
+        {
+          "path": "src/watering.ts",
+          "sha256": "e8ab387be5843f74e0d64050f35d81b1c2f8a99bc1b8d3ed71b11cf128c56ab9"
+        }
+      ],
+      "repository": "https://github.com/tkucic/plc_garden_controller",
+      "revision": "ef3e937c8ead73a7078925b0da32fca59c85379b",
+      "license": "MIT",
+      "originalFiles": 27,
+      "originalSourceObjects": 18,
+      "portManifestSha256": "dfbcfcce12c22a5949444de6fbee2b8aa2ab4611ba8882b9709ef5173119d518",
+      "upstreamHashesVerified": true
+    }
+  ],
+  "limitations": [
+    "Native evidence is compilation, project creation and boot-application generation, not physical runtime execution.",
+    "Behavior tests execute normalized compiler IR with timer/edge models; BLINK is modeled only for fixed positive durations sampled at exact phase boundaries.",
+    "Original visualization/device assets are preserved but not rebound or commissioned; generated imports use the verified virtual engineering template.",
+    "Garden MAX equal signed-zero tie for externally injected negative-zero humidity is not specified by vendor documentation; initialized authored transitions cannot produce that value.",
+    "Larger inspected HomeAutomation, MQTT and UniTest sources are documented as unsupported complete ports and are not represented as working examples."
+  ],
+  "independentReview": {
+    "trafficAndMixing": {
+      "status": "APPROVED",
+      "reviewers": ["/root/module6_independent_review", "/root/module_review"]
+    },
+    "gardenAndIntegration": {
+      "status": "APPROVED",
+      "reviewers": ["/root/module6_independent_review", "/root/module_review"]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@vplc/build",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./libraries": {
+      "types": "./src/libraries.ts",
+      "bun": "./src/libraries.ts",
+      "default": "./dist/libraries.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "python",
+    "docker",
+    "runtime"
+  ],
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "dependencies": {
+    "zod": "4.3.6",
+    "@vplc/config": "workspace:*",
+    "@vplc/typegen": "workspace:*"
+  },
+  "bin": {
+    "vplc-build": "./dist/cli.js"
+  }
+}

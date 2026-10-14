@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "dependencies": {
+    "Standard": {
+      "title": "Standard",
+      "company": "System",
+      "version": "3.5.22.0",
+      "path": ".vplc/libraries/a68412c2fac752f906faf716fef3301a8e4f2fda9a9009bca484081f77e183e6-Standard.compiled-library-v3",
+      "sha256": "a68412c2fac752f906faf716fef3301a8e4f2fda9a9009bca484081f77e183e6",
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Standard/3.5.22.0/Standard.compiled-library-v3"
+    }
+  }
+}

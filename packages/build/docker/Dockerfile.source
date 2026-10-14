@@ -1,0 +1,15 @@
+# Refresh vPLC code without reinstalling an already verified vendor compiler.
+ARG BUILDER_IMAGE=vplc-build:3.5.22.30
+FROM ${BUILDER_IMAGE}
+USER root
+WORKDIR /opt/codesys-build
+COPY src /opt/codesys-build/src
+COPY python /opt/codesys-build/python
+COPY docker/runner.ts docker/entrypoint.sh docker/config.ts /opt/codesys-build/docker/
+COPY runtime /opt/codesys-build/runtime
+COPY shared-config /opt/vplc-config
+RUN bun build src/index.ts --target=node --packages=external --outdir dist \
+    && chmod +x /opt/codesys-build/docker/entrypoint.sh
+WORKDIR /workspace
+ENTRYPOINT ["/opt/codesys-build/docker/entrypoint.sh"]
+CMD ["--help"]
