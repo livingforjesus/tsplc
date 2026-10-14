@@ -1,0 +1,7 @@
+node_modules
+dist
+.work
+.tsplc
+artifacts
+**/THIRD_PARTY_NOTICES.md
+examples/**/generated

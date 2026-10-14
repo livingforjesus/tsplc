@@ -1,0 +1,63 @@
+{
+  "name": "@tsplc/typegen",
+  "license": "MIT",
+  "description": "Generate TypeScript PLC contracts and typed EtherNet/IP hardware IO mappings from Structured Text and EDS files.",
+  "keywords": [
+    "plc",
+    "codesys",
+    "eds",
+    "ethernet-ip",
+    "typegen"
+  ],
+  "homepage": "https://github.com/livingforjesus/tsplc#readme",
+  "bugs": "https://github.com/livingforjesus/tsplc/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livingforjesus/tsplc.git",
+    "directory": "packages/typegen"
+  },
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./codegen": {
+      "types": "./src/codegen/generate.ts",
+      "bun": "./src/codegen/generate.ts",
+      "default": "./dist/codegen.js"
+    },
+    "./hardware": {
+      "types": "./src/hardware.ts",
+      "bun": "./src/hardware.ts",
+      "default": "./dist/hardware.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src/index.ts",
+    "src/project.ts",
+    "src/hardware.ts",
+    "src/cli.ts",
+    "src/codegen/generate.ts",
+    "src/codegen/parser.ts",
+    "src/codegen/constants.ts",
+    "!**/*.test.ts",
+    "!**/__tests__/**"
+  ],
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "dependencies": {
+    "@tsplc/config": "workspace:*",
+    "prettier": "3.9.10"
+  },
+  "bin": {
+    "tsplc-typegen": "./dist/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

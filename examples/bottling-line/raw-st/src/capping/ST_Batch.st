@@ -1,0 +1,6 @@
+TYPE ST_Batch :
+STRUCT
+	Id : UDINT;
+	CapTorques : ARRAY [1..4] OF REAL;
+END_STRUCT
+END_TYPE

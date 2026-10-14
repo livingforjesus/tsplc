@@ -1,0 +1,17 @@
+**
+!package.json
+!bun.lock
+!src
+!src/**
+src/**/*.test.ts
+src/__tests__
+!python
+!python/build.py
+!python/worker.py
+!python/codesys_online.py
+!docker
+!docker/**
+docker/.installer
+
+!shared-config
+!shared-config/**

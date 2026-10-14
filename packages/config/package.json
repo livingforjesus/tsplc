@@ -1,0 +1,52 @@
+{
+  "name": "@tsplc/config",
+  "license": "MIT",
+  "description": "Shared tsplc.config.ts schema and path resolution for tsPLC projects.",
+  "keywords": [
+    "plc",
+    "codesys",
+    "config"
+  ],
+  "homepage": "https://github.com/livingforjesus/tsplc#readme",
+  "bugs": "https://github.com/livingforjesus/tsplc/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livingforjesus/tsplc.git",
+    "directory": "packages/config"
+  },
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./build": {
+      "types": "./src/build.ts",
+      "bun": "./src/build.ts",
+      "default": "./dist/build.js"
+    },
+    "./schema": {
+      "types": "./src/schema.ts",
+      "bun": "./src/schema.ts",
+      "default": "./dist/schema.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "!**/*.test.ts",
+    "!**/__tests__/**"
+  ],
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "dependencies": {
+    "zod": "4.3.6",
+    "jiti": "2.7.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

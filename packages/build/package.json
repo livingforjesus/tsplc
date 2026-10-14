@@ -1,0 +1,55 @@
+{
+  "name": "@tsplc/build",
+  "license": "MIT",
+  "description": "Build tsPLC and Structured Text projects with CODESYS in Docker: library installs, compilation, runtime download and online changes.",
+  "keywords": [
+    "plc",
+    "codesys",
+    "docker",
+    "structured-text"
+  ],
+  "homepage": "https://github.com/livingforjesus/tsplc#readme",
+  "bugs": "https://github.com/livingforjesus/tsplc/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livingforjesus/tsplc.git",
+    "directory": "packages/build"
+  },
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./libraries": {
+      "types": "./src/libraries.ts",
+      "bun": "./src/libraries.ts",
+      "default": "./dist/libraries.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "python",
+    "docker",
+    "runtime",
+    "!**/*.test.ts",
+    "!**/__tests__/**"
+  ],
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "dependencies": {
+    "zod": "4.3.6",
+    "@tsplc/config": "workspace:*",
+    "@tsplc/typegen": "workspace:*"
+  },
+  "bin": {
+    "tsplc-build": "./dist/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

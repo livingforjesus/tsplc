@@ -1,0 +1,7 @@
+{
+  "project": "virtual.project",
+  "sha256": "63d1ccba5cedb2267a9239120351a3df707c46804a1fca800432cd3d26254606",
+  "codesys": "CODESYS V3.5 SP22 Patch 3",
+  "target": "CODESYS Virtual Control for Linux ARM64 4.22.0.0",
+  "addedLibrary": "Util, 3.5.22.0 (System)"
+}

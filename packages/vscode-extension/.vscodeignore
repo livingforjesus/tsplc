@@ -1,0 +1,12 @@
+src/**
+tests/**
+scripts/**
+.vscode/**
+.vscode-test/**
+node_modules/**
+artifacts/**
+dist/host-tests.cjs
+**/*.map
+tsconfig.json
+.gitignore
+.github/**

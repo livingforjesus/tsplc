@@ -1,0 +1,17 @@
+{
+  "name": "@tsplc/example-bottling-line",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typegen": "tsplc typegen --config tsplc.config.ts",
+    "check-sources": "tsplc check --config tsplc.config.ts",
+    "emit": "tsplc build --config tsplc.config.ts --emit-only",
+    "build": "tsplc build --config tsplc.config.ts",
+    "typecheck": "tsc --noEmit --project tsconfig.host.json"
+  },
+  "dependencies": {
+    "@tsplc/compiler": "workspace:*",
+    "@tsplc/config": "workspace:*"
+  }
+}

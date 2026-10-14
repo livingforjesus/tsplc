@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "CODESYS Structured Text",
+  "scopeName": "source.codesys-st",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#pragmas" },
+    { "include": "#literals" },
+    { "include": "#declarations" },
+    { "include": "#types" },
+    { "include": "#keywords" },
+    { "include": "#operators" },
+    {
+      "name": "entity.name.function.codesys-st",
+      "match": "\\b[A-Za-z_][A-Za-z_0-9]*(?=\\s*\\()"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.codesys-st",
+          "begin": "//",
+          "end": "$"
+        },
+        {
+          "name": "comment.block.codesys-st",
+          "begin": "\\(\\*",
+          "end": "\\*\\)",
+          "patterns": [{ "include": "#comments" }]
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.codesys-st",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.codesys-st",
+              "match": "\\$(?:[0-9A-Fa-f]{2}|.)"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.codesys-st",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.codesys-st",
+              "match": "\\$(?:[0-9A-Fa-f]{4}|.)"
+            }
+          ]
+        }
+      ]
+    },
+    "pragmas": {
+      "name": "meta.preprocessor.codesys-st",
+      "begin": "\\{",
+      "end": "\\}",
+      "patterns": [
+        { "include": "#strings" },
+        {
+          "name": "keyword.control.directive.codesys-st",
+          "match": "(?i)\\b(?:attribute|if|elsif|else|end_if|defined|hasvalue)\\b"
+        }
+      ]
+    },
+    "literals": {
+      "patterns": [
+        {
+          "name": "constant.numeric.time.codesys-st",
+          "match": "(?i)\\b(?:L?TIME|L?T|L?DATE|L?D|L?TOD|L?TIME_OF_DAY|L?DT|L?DATE_AND_TIME)#[+-]?[0-9][0-9a-z_:.\\-]*"
+        },
+        {
+          "name": "constant.numeric.codesys-st",
+          "match": "(?i)\\b(?:(?:SINT|USINT|INT|UINT|DINT|UDINT|LINT|ULINT|BYTE|WORD|DWORD|LWORD|REAL|LREAL)#)?[+-]?(?:(?:2|8|16)#[0-9a-f_]+|[0-9][0-9_]*(?:\\.(?!\\.)[0-9_]+)?(?:e[+-]?[0-9_]+)?)"
+        },
+        {
+          "name": "constant.language.boolean.codesys-st",
+          "match": "(?i)\\b(?:BOOL#)?(?:TRUE|FALSE)\\b"
+        },
+        {
+          "name": "variable.other.address.codesys-st",
+          "match": "(?i)%[IQM](?:[XBWDL])?(?:[0-9]+(?:\\.[0-9]+)*|\\*)"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "match": "(?i)\\b(PROGRAM|FUNCTION_BLOCK|FUNCTION|METHOD|PROPERTY|INTERFACE|TYPE)\\s+(?:(PUBLIC|PRIVATE|PROTECTED|INTERNAL|ABSTRACT|FINAL|OVERRIDE)\\s+)*([A-Za-z_][A-Za-z_0-9]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.codesys-st" },
+            "2": { "name": "storage.modifier.codesys-st" },
+            "3": { "name": "entity.name.type.codesys-st" }
+          }
+        }
+      ]
+    },
+    "types": {
+      "name": "storage.type.codesys-st",
+      "match": "(?i)\\b(?:BOOL|BIT|SINT|USINT|INT|UINT|DINT|UDINT|LINT|ULINT|BYTE|WORD|DWORD|LWORD|REAL|LREAL|STRING|WSTRING|L?TIME|L?DATE|L?TOD|L?DT|L?TIME_OF_DAY|L?DATE_AND_TIME|ARRAY|POINTER|REFERENCE|REF_TO|ANY(?:_[A-Z]+)?)\\b"
+    },
+    "keywords": {
+      "name": "keyword.control.codesys-st",
+      "match": "(?i)\\b(?:PROGRAM|FUNCTION_BLOCK|FUNCTION|METHOD|PROPERTY|INTERFACE|TYPE|STRUCT|UNION|END_(?:PROGRAM|FUNCTION_BLOCK|FUNCTION|METHOD|PROPERTY|INTERFACE|TYPE|STRUCT|UNION|VAR|IF|CASE|FOR|WHILE|REPEAT)|VAR(?:_INPUT|_OUTPUT|_IN_OUT|_TEMP|_STAT|_INST|_EXTERNAL|_GLOBAL|_ACCESS|_CONFIG|_GENERIC)?|IF|THEN|ELSIF|ELSE|CASE|OF|FOR|TO|BY|DO|WHILE|REPEAT|UNTIL|EXIT|CONTINUE|RETURN|EXTENDS|IMPLEMENTS|PUBLIC|PRIVATE|PROTECTED|INTERNAL|ABSTRACT|FINAL|OVERRIDE|CONSTANT|RETAIN|NON_RETAIN|PERSISTENT|AT|THIS|SUPER)\\b"
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.word.codesys-st",
+          "match": "(?i)\\b(?:AND_THEN|OR_ELSE|AND|OR|XOR|NOT|MOD)\\b|\\b(?:REF|S|R)="
+        },
+        {
+          "name": "keyword.operator.codesys-st",
+          "match": ":=|=>|\\.\\.|\\*\\*|<>|<=|>=|[+*/=<>^&-]"
+        },
+        { "name": "punctuation.separator.codesys-st", "match": "[;,:.]" }
+      ]
+    }
+  }
+}

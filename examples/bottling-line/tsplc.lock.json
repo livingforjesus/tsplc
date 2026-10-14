@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "dependencies": {
+    "Util": {
+      "title": "Util",
+      "company": "System",
+      "version": "3.5.22.0",
+      "path": ".tsplc/libraries/bbeb3679e14b450a9f2b97d8a51c709bf36b4efc1f241e3d9fa369433cf3ddd4-Util.compiled-library-v3",
+      "sha256": "bbeb3679e14b450a9f2b97d8a51c709bf36b4efc1f241e3d9fa369433cf3ddd4",
+      "url": "https://store-archive.codesys.com/CODESYSLibs/System/Util/3.5.22.0/Util.compiled-library-v3",
+      "namespace": "Util"
+    }
+  }
+}

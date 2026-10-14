@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.tsplc/
+.work/
+.turbo/
+*.tgz
+*.vsix
+artifacts/
+examples/**/build/
+__pycache__/
+*.pyc
+*.pyo
